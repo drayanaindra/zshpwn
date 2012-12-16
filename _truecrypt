@@ -1,0 +1,52 @@
+#compdef truecrypt
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '--auto-mount=[Auto mount device-hosted/favorite volumes]' \
+  '--backup-headers[Backup volume headers]' \
+  '--background-task[Start Background Task]' \
+  '-C[Change password or keyfiles]' \
+  '-c[Create new volume]' \
+  '--create-keyfile[Create new keyfile]' \
+  '--delete-token-keyfiles[Delete security token keyfiles]' \
+  '-d[Dismount volume]' \
+  '--display-password[Display password while typing ;) watch out shoulder surfer]' \
+  '--encryption=[Encryption algorithm]:algo' \
+  '--explore[Open explorer window for mounted volume]' \
+  '--export-token-keyfile[Export keyfile from security token]' \
+  '--filesystem=[Filesystem type]:fs type' \
+  '-f[Force mount/dismount/overwrite]' \
+  '--fs-options=[Filesystem mount options]:opsi fs' \
+  '--hash=[Hash algorithm]:hashes' \
+  '--import-token-keyfiles[Import keyfiles to security token]' \
+  '-k[Keyfiles]' \
+  '-l[List mounted volumes]' \
+  '--list-token-keyfiles[List security token keyfiles]' \
+  '--load-preferences[Load user preferences]' \
+  '--mount[Mount volume interactively]' \
+  '-m[TrueCrypt volume mount options]' \
+  '--new-keyfiles=[New keyfiles]:key files' \
+  '--new-password=[New password]:key files' \
+  '--non-interactive[Do not interact with user]' \
+  '-p[Password]' \
+  '--protect-hidden=[Protect hidden volume]:protect hidden' \
+  '--protection-keyfiles=[Keyfiles for protected hidden volume]:protection keyfiles' \
+  '--protection-password=[Password for protected hidden volume]:protection passwd' \
+  '--random-source=[Use file as source of random data]:random source' \
+  '--restore-headers[Restore volume headers]' \
+  '--save-preferences[Save user preferences]' \
+  '--quick[Enable quick format]' \
+  '--size=[Size in bytes]:sizes' \
+  '--slot=[Volume slot number]:slots' \
+  '--test[Test internal algorithms]' \
+  '-t[Use text user interface]' \
+  '--token-lib=[Security token library]:tokenz' \
+  '-v[Enable verbose output]' \
+  '--version[Display version information]' \
+  '--volume-properties[Display volume properties]' \
+  '--volume-type=[Volume type]:volumes type' \
+  
+  
