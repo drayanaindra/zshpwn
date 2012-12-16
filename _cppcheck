@@ -1,0 +1,52 @@
+#compdef cppcheck
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '--append=[Provide information about functions by providing an implementation for them]:FILE' \
+  '--check-config[Check cppcheck configuration]' \
+  '-D[Limit the checking to a particular configuration (Example: -DDEBUG=1)]' \
+  '-U[Explicitly hide certain #ifdef <ID> code paths from checking (Example: -UDEBUG)]' \
+  '--enable=[Enable additional checks]:ENABLES:->list-enables' \
+  '--error-exitcode=[Default 0 and 1 is returned]:n' \
+  '--errorlist[Print a list of all the error messages in XML format]' \
+  '--exitcode-suppressions=[Used when certain messages should be displayed but should not cause a non-zero exitcode]:supress file' \
+  '--file-list=[Specify the files to check in a text file]:file list' \
+  '-f[Force checking of all configurations in files]' \
+  '-I[Give path to search for include files]' \
+  '-i[Give a source file or source file directory to exclude from the check]' \
+  '--includes-file=[Specify directory paths to search for included header files in a text file]:include file' \
+  '--inconclusive[Allow that Cppcheck reports even though the analysis is inconclusive]' \
+  '--inline-suppr[Enable inline suppressions]' \
+  '-j[ Start <jobs> threads to do the checking simultaneously]' \
+  '-x[Forces cppcheck to check all files as the given language]' \
+  '--platform=[Specifies platform specific types and sizes]:PLATFORMS:->list-platforms' \
+  '-q[Only print error messages]' \
+  '-rp[Use relative paths in output]' \
+  '--overlay=[overlay]:OVERLAYS:->list-overlays' \
+  '--report-progress[Report progress messages while checking a file]' \
+  '--std=[Set standard]:STANDARD:->list-standar' \
+  '--suppress=[Suppress warnings listed in the file]:supress me' \
+  '--template=[Format the error messages]:TEXT' \
+  '-v[Output more detailed error information]' \
+  '--version[Print out version number]' \
+  '--xml[Write results in xml format to error stream (stderr)]' \
+  '--xml-version=[Select the XML file version]:XML:->list-xml' \
+
+# are we really need description?
+case "$state" in
+  list-enables)
+    _values -S : 'ENABLES' 'all' 'style' 'performance' 'portability' 'information' 'unusedFunction' 'missingInclude'
+    ;;
+  list-platforms)
+    _values -S : 'PLATFORMS' 'unix32' 'unix64' 'win32A' 'win32W' 'win64'
+    ;;
+  list-standar)
+    _values -S : 'STANDARD' 'posix' 'c89' 'c99' 'c11' 'c++03' 'c++11'
+    ;;
+  list-xml)
+    _values -S : 'XML' '1' '2'
+    ;;
+esac
