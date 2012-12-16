@@ -1,0 +1,25 @@
+#compdef flawfinder
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '--allowlink[Allow symbolic links]' \
+  '--followdotdir[Follow directories whose names begin with "."]' \
+  '-c[Show context (the line having the "hit" potential flaw)]' \
+  '-C[Show  the  column  number]' \
+  '--html[run getpc mode, try to detect a shellcode]' \
+  '-m[Set minimum risk level to X for inclusion in hitlist]' \
+  '-S[Single-line output]' \
+  '-n[Never ignore security issues]' \
+  '-i[Immediately display hits]' \
+  '-I[Show only functions that obtain data from outside the program]' \
+  '--omittime[Omit time to run]' \
+  '--patch=[display information related to the patch F (patch must be already applied)]:patch F' \
+  '-Q[Dont display status information]' \
+  '-D[Dont display the headers and footers of the analysis]' \
+  '--listrules[List the rules in the ruleset (rule database)]' \
+  '--loadhitlist=[Load hits from F instead of analyzing source programs]:load F' \
+  '--savehitlist=[Save all hits (the "hitlist") to F]:save F' \
+  '--diffhitlist=[Show only hits (loaded or analyzed) not in F]:diff F' \
