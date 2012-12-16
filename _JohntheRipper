@@ -1,0 +1,54 @@
+#compdef john
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '--single=["single crack" mode]:single mode on' \
+  '--wordlist=[wordlist mode]' \
+  '--loopback[like --wordlist, but fetch words from a .pot file]' \
+  '--dupe-suppression[suppress all dupes in wordlist (and force preload)]' \
+  '--rules=[enable word mangling rules for wordlist modes]:rules section' \
+  '--incremental=["incremental" mode]:section mode' \
+  '--markov=["Markov" mode]' \
+  '--external=[external mode or word filter]:external mode on' \
+  '--stdout=[just output candidate passwords (cut at LENGTH)]:cut me' \
+  '--restore=[restore an interrupted session (called NAME)]:call me' \
+  '--session=[give a new session the NAME]:session name' \
+  '--status=[print status of a session (called NAME)]:show status' \
+  '--make-charset=[make a charset file. It will be overwritten]:charset file' \
+  '--show=[show cracked passwords (if =LEFT, then uncracked)]:show left' \
+  '--test=[run tests and benchmarks for TIME seconds each]:time seconds' \
+  '--users=[do not load this (these) user(s) only]:not user' \
+  '--groups=[load users (not) of this (these) group(s) only]:not group' \
+  '--shells=[load users with(out) this (these) shell(s) only]:shell or not shell' \
+  '--salts=[load salts with(out) COUNT (to MAX) hashes]:salts or not salts' \
+  '--save-memory=[enable memory saving, at LEVEL 1..3]:save memory' \
+  '--pot=[pot file to use]:pot filename' \
+  '--format=[force hash type NAME]:HASHES:->list-hashes' \
+ 
+case "$state" in
+  list-hashes)
+    _values -S : 'HASHES' 'afs' 'agilekeychain' 'bf' 'bfegg' 'bsdi' \
+                  'chap' 'clipperz' 'crc32' 'crypt' 'des' 'django' 'dmd5' 'dmg' \
+                  'dominosec' 'dragonfly3-32' 'dragonfly3-64' 'dragonfly4-32' \
+                  'dragonfly4-64' 'drupal7' 'dummy' 'dynamic_n' 'encfs' 'epi' \
+                  'episerver' 'formspring' 'fortigate' 'gost' 'gpg' 'hdaa' 'hmac-md5' \
+                  'hmac-sha1' 'hmac-sha224' 'hmac-sha256' 'hmac-sha384' \
+                  'hmac-sha512' 'hmailserver' 'ike' 'ipb2' 'keepass' 'keychain' \
+                  'keyring' 'krb4' 'krb5' 'krb5pa-md5' 'krb5pa-sha1' 'lastpass' 'lm' \
+                  'lotus5' 'md4-gen' 'md5' 'md5ns' 'mediawiki' 'mongodb' 'mscash' \
+                  'mscash2' 'mschapv2' 'mssql' 'mssql05' 'mssql12' 'mysql' \
+                  'mysql-sha1' 'mysqlna' 'nethalflm' 'netlm' 'netlmv2' 'netntlm' \
+                  'netntlmv2' 'nk' 'npdf' 'nsldap' 'nt' 'nt2' 'o5logon' 'odf' 'office' \
+                  'oldoffice' 'openvms' 'oracle' 'oracle11' 'osc' \
+                  'pbkdf2-hmac-sha512' 'pdf' 'pfx' 'phpass' 'phps' 'pix-md5' 'pkzip' \
+                  'po' 'postgre' 'pst' 'putty' 'pwsafe' 'racf' 'radmin' 'rar' 'raw-md4' \
+                  'raw-md5' 'raw-md5u' 'raw-sha' 'raw-sha1' 'raw-sha1-linkedin' \
+                  'raw-sha1-ng' 'raw-sha224' 'raw-sha256' 'raw-sha384' \
+                  'raw-sha512' 'salted-sha1' 'sapb' 'sapg' 'sha1-gen' 'sha256crypt' \
+                  'sha512crypt' 'sip' 'ssh' 'ssh-ng' 'strip' 'sunmd5' 'sxc' 'sybasease' \
+                  'tc_ripemd160' 'tc_sha512' 'tc_whirlpool' 'trip' 'vnc' 'wbb3' \
+                  'wowsrp' 'wpapsk' 'xsha' 'xsha512' 'zip' \
+    ;;
+esac
