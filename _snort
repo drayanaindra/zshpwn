@@ -1,0 +1,62 @@
+#compdef snort
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-A[Set alert mode]:MODES:->list-modes' \
+  '-b[Log packets in tcpdump format (much faster!)]' \
+  '-B[Obfuscated IP addresses in alerts and packet dumps using CIDR mask]' \
+  '-c[Use Rules File]' \
+  '-d[Dump the Application Layer]' \
+  '-D[Run Snort in background (daemon) mode]' \
+  '-e[Display the second layer header info]' \
+  '-f[Turn off fflush() calls after binary log writes]' \
+  '-F[Read BPF filters from file <bpf>]' \
+  '-g[Run snort gid as <gname> group (or gid) after initialization]' \
+  '-G[Log Identifier (to uniquely id events for multiple snorts)]' \
+  '-h[Set home network]' \
+  '-H[Make hash tables deterministic]' \
+  '-i[Listen on interface]:INTERFACE:_net_interfaces' \
+  '-I[Add Interface name to alert output]' \
+  '-k[Checksum mode]:CHECKSUMS:->list-checksums' \
+  '-K[Logging mode]:LOGS:->list-logs' \
+  '-l[Log to directory]' \
+  '-L[Log to this tcpdump file]' \
+  '-M[Log messages to syslog (not alerts)]' \
+  '-m[Set umask]' \
+  '-n[Exit after receiving <cnt> packets]' \
+  '-N[Turn off logging (alerts still work)]' \
+  '-O[Obfuscate the logged IP addresses]' \
+  '-p[Disable promiscuous mode sniffing]' \
+  '-P[Set explicit snaplen of packet (default: 1514)]' \
+  '-q[Quiet. Dont show banner and status report]' \
+  '-Q[Enable inline mode operation]' \
+  '-r[Read and process tcpdump file <tf>]' \
+  '-R[Include 'id' in snort_intf<id>.pid file name]' \
+  '-s[Log alert messages to syslog]' \
+  '-S[Set rules file variable n equal to value v]' \
+  '-t[Chroots process to <dir> after initialization]' \
+  '-T[Test and report on the current Snort configuration]' \
+  '-u[Run snort uid as <uname> user (or uid) after initialization]' \
+  '-U[Use UTC for timestamps]' \
+  '-v[Be verbose]' \
+  '-V[Show version number]' \
+  '-X[Dump the raw packet data starting at the link layer]' \
+  '-x[Exit if Snort configuration problems occur]' \
+  '-y[Include year in timestamp in the alert and log files]' \
+  '-Z[Set the performonitor preprocessor file path and name]' \
+  '-?[Guess what?]' \
+  
+case "$state" in
+  list-modes)
+    _values -S : 'MODES' 'fast' 'full' 'console' 'test' 'none' 'unsock'
+    ;;
+  list-checksums)
+    _values -S : 'CHECKSUMS' 'all' 'noip' 'notcp' 'noudp' 'noicmp' 'none'
+    ;;
+  list-checksums)
+    _values -S : 'LOGS' 'pcap' 'ascii' 'none'
+    ;;
+esac
+
