@@ -1,0 +1,24 @@
+#compdef paxctl
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-p[disable PAGEEXEC]' \
+  '-P[enable PAGEEXEC]' \
+  '-e[disable EMUTRAMP]' \
+  '-E[enable EMUTRAMP]' \
+  '-m[disable MPROTECT]' \
+  '-M[enable MPROTECT]' \
+  '-r[disable RANDMMAP]' \
+  '-R[enable RANDMMAP]' \
+  '-x[disable RANDEXEC]' \
+  '-X[enable RANDEXEC]' \
+  '-s[disable SEGMEXEC]' \
+  '-S[enable SEGMEXEC]' \
+  '-v[view flags]' \
+  '-z[restore default flags]' \
+  '-q[suppress error messages]' \
+  '-Q[report flags in short format]' \
+  '-c[convert PT_GNU_STACK into PT_PAX_FLAGS (see manpage!)]' \
+  '-C[create PT_PAX_FLAGS (see manpage!)]' \
