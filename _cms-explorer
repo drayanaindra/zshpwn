@@ -1,0 +1,28 @@
+#compdef cms-explorer.pl
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-help[Guess what?]' \
+  '-bsproxy[Proxy to route findings through (fmt: host:port)]' \
+  '-explore[Look for files in the theme/plugin dir]' \
+  '-osvdb[Do OSVDB check for finds]' \
+  '-plugins[Look for plugins]' \
+  '-pluginfile[Plugin file list]' \
+  '-proxy[Proxy for requests (fmt: host:port)]' \
+  '-themes[Look for themes (default: on)]' \
+  '-themefile[Theme file list]' \
+  '-type[Force CMS type]:TYPES:->list-types' \
+  '-update[Update lists from Wordpress/Drupal (over-writes text files)]' \
+  '-url[Full url to apps base directory]:URLS:_urls' \
+  '-verbosity[verbose level]:VERBOSES:->list-verboses' \
+ 
+case "$state" in
+  list-types)
+    _values -S : 'TYPES' 'Drupal' 'Wordpress' 'Joomla' 'Mambo'
+    ;;
+  list-types)
+    _values -S : 'VERBOSES' '1' '2' '3'
+    ;;
+esac
