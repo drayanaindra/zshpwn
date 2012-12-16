@@ -1,0 +1,135 @@
+#compdef nikto.pl
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-Help[Guess what?]' \
+  '-ask[Whether to ask about submitting updates]:TANYA:->list-tanya' \
+  '-Cgidirs[Scan these CGI dirs: "none", "all", or values like "/cgi/ /cgi-a/"]' \
+  '-Display[Turn on/off display outputs]:DISPLAYS:->list-diplays' \
+  '-dbcheck[Check database and other key files for syntax errors]' \
+  '-evasion[Encoding technique]:EVASIONS:->list-evasions' \
+  '-Format[Save file (-o) format]:FORMATS:->list-formats' \
+  '-host[Target host]' \
+  '-IgnoreCode[Ignore Codes--treat as negative responses]' \
+  '-key[Client certificate key file]' \
+  '-maxtime[Maximum testing time per host]' \
+  '-mutate[Guess additional file names]:MUTATION:->list-mutation' \
+  '-mutate-options[Provide information for mutates]' \
+  '-nointeractive[Disables interactive features]' \
+  '-nolookup[Disables DNS lookups]' \
+  '-nossl[Disables the use of SSL]' \
+  '-no404[Disables nikto attempting to guess a 404 page]' \
+  '-output[Write output to this file]' \
+  '-Pause[Pause between tests (seconds, integer or float)]' \
+  '-Plugins[List of plugins to run]:PLUGIN:->list-plugin' \
+  '-port[Port to use (default 80)]' \
+  '-RSAcert[Client certificate file]' \
+  '-root[Prepend root value to all requests]' \
+  '-Save[Save positive responses to this directory]' \
+  '-ssl[Force ssl mode on port]' \
+  '-Tuning[Scan tuning]:SCANS:->list-scans' \
+  '-timeout[Timeout for requests (default 10 seconds)]' \
+  '-Userdbs[Load only user databases, not the standard databases]:DATABASE:->list-db' \
+  '-until[Run until the specified time or duration]' \
+  '-update[Update databases and plugins from CIRT.net]' \
+  '-useproxy[Use the proxy defined in nikto.conf]' \
+  '-Version[Print plugin and database versions]' \
+  '-vhost[Virtual host (for Host header)]' \
+
+case "$state" in
+  list-offset)
+    _values -S : 'TANYA' 'yes[Ask about each (default)]' 'no[Dont ask, dont send]' 'auto[Dont ask, just send]'
+    ;;
+  list-displays)
+    _values -S : 'DISPLAYS' '1[Show redirects]' \
+                  '2[Show cookies received]' \
+                  '3[Show all 200/OK responses]' \
+                  '4[Show URLs which require authentication]' \
+                  'D[Debug output]' \
+                  'E[Display all HTTP errors]' \
+                  'P[Print progress to STDOUT]' \
+                  'S[Scrub output of IPs and hostnames]' \
+                  'V[Verbose output]'
+    ;;
+  list-evasions)
+    _values -S : 'EVASIONS' '1[Random URI encoding (non-UTF8)]' \
+                  '2[Directory self-reference]' \
+                  '3[Premature URL ending]' \
+                  '4[Prepend long random string]' \
+                  '5[Fake parameter]' \
+                  '6[TAB as request spacer]' \
+                  '7[Change the case of the URL]' \
+                  '8[Use Windows directory separator]' \
+                  'A[Use a carriage return (0x0d) as a request spacer]' \
+                  'B[Use binary value 0x0b as a request spacer]'
+  ;;
+  list-formats)
+    _values -S : 'FORMATS' 'csv[Comma-separated-value]' \
+                  'htm[HTML Format]' \
+                  'msf+[Log to Metasploit]' \
+                  'nbe[Nessus NBE format]' \
+                  'txt[Plain text]' \
+                  'xml[XML Format]'
+  ;;
+  list-mutation)
+    _values -S : 'TANYA' '1[Test all files with all root directories]' \
+                  '2[Guess for password file names]' \
+                  '3[Enumerate user names via Apache]' \
+                  '4[Enumerate user names via cgiwrap]' \
+                  '5[Attempt to brute force sub-domain names, assume that the host name is the parent domain]' \
+                  '6[Attempt to guess directory names from the supplied dictionary file]'
+  ;;
+  list-scans)
+    _values -S : 'SCANS' '1[Interesting File / Seen in logs]' \
+                  '2[Misconfiguration / Default File]' \
+                  '3[Information Disclosure]' \
+                  '4[Injection (XSS/Script/HTML)]' \
+                  '5[Remote File Retrieval - Inside Web Root]' \
+                  '6[Denial of Service]' \
+                  '7[Remote File Retrieval - Server Wide]' \
+                  '8[Command Execution / Remote Shell]' \
+                  '9[SQL Injection]' \
+                  '0[File Upload]' \
+                  'a[Authentication Bypass]' \
+                  'b[Software Identification]' \
+                  'c[Remote Source Inclusion]' \
+                  'x[Reverse Tuning Options (i.e., include all except specified)]'
+  ;;
+  list-plugin)
+    _values -s : 'PLUGIN' 'favicon[Checks the web servers favicon against known favicons]' \
+                  'embedded[Checks to see whether the host is an embedded server]' \
+                  'report_html[Produces an HTML report]' \
+                  'cookies[Looks for internal IP addresses in cookies returned from an HTTP request]' \
+                  'report_metasploit[Logs data to Metasploit]' \
+                  'tests[Test host with the standard Nikto tests]' \
+                  'siebel[Performs a set of checks against an installed Siebel application]' \
+                  'put_del_test[Attempts to upload and delete files through the PUT and DELETE HTTP methods]' \
+                  'ssl[Perform checks on SSL/Certificates]' \
+                  'report_csv[Produces a CSV report]' \
+                  'apache_expect_xss[Checks whether the web servers has a cross-site scripting vulnerability through the Expect: HTTP header]' \
+                  'apacheusers[Checks whether we can enumerate usernames directly from the web server]' \
+                  'paths[Look at link paths to help populate variables]' \
+                  'report_text[Produces a text report]' \
+                  'report_nbe[Produces a NBE report]' \
+                  'auth[Attempt to guess authentication realms]' \
+                  'msgs[Checks the server version against known issues]' \
+                  'multiple_index[Checks for multiple index files]' \
+                  'fileops[Saves results to a text file]' \
+                  'parked[Checks to see whether the host is parked at a registrar or ad location]' \
+                  'content_search[Search resultant content for interesting strings]' \
+                  'cgi[Enumerates possible CGI directories]' \
+                  'httpoptions[Performs a variety of checks against the HTTP options returned from the server]' \
+                  'dictionary[Attempts to dictionary attack commonly known directories/files]' \
+                  'outdated[Checks to see whether the web server is the latest version]' \
+                  'clientaccesspolicy[Checks whether a client access file exists, and if it contains a wildcard entry]' \
+                  'robots[Checks whether theres anything within the robots.txt file and analyses it for other paths to pass to other scripts]' \
+                  'headers[Performs various checks against the headers returned from an HTTP request]' \
+                  'subdomain[Attempts to bruteforce commonly known sub-domains]'
+    ;;
+    list-db)
+    _values -S : 'DATABASE' 'all[Disable standard dbs and load only user dbs]' \
+                  'tests[Disable only db_tests and load udb_tests]'
+    ;;
+esac
