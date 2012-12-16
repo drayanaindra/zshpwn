@@ -1,0 +1,19 @@
+#compdef joomscan.pl
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-x[proXy to tunnel]' \
+  '-c[Cookie (name=value;]' \
+  '-g[desired useraGent string(within ")]' \
+  '-nv[No Version fingerprinting check]' \
+  '-nf[No Firewall detection check]' \
+  '-nvf[No version+firewall check]' \
+  '-pe[Poke version only and Exit]' \
+  '-ot[Output to Text file]' \
+  '-oh[Output to Html file]' \
+  '-vu[Verbose (output every Url scan)]' \
+  '-sp[Show completed Percentage]' \
+  '-u[victim]:URLS:_urls' \
+
