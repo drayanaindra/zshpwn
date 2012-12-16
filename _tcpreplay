@@ -1,0 +1,44 @@
+#compdef tcpreplay
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-q[Quiet mode]' \
+  '-T[Select packet timing mode]:TIMINGS:->list-timings' \
+  '--sleep-accel=[Reduce the amount of time to sleep by specified usec]:tidur' \
+  '--rdtsc-clicks=[Specify the RDTSC clicks/usec]:num' \
+  '-v[Print decoded packets via tcpdump to STDOUT]' \
+  '-A[Arguments passed to tcpdump decoder]' \
+  '-K[Enable caching of packets to internal memory]' \
+  '--preload-pcap[Preloads packets into RAM before sending]' \
+  '-c[Split traffic via a tcpprep cache file]' \
+  '-2[Replay two files at a time from a network tap]' \
+  '-i[Server/primary traffic output interface]' \
+  '-I[Client/secondary traffic output interface]' \
+  '-l[Loop through the capture file X times]' \
+  '--pktlen[Override the snaplen and use the actual packet len]' \
+  '-L[Limit the number of packets to send]' \
+  '-x[Modify replay speed to a given multiple]' \
+  '-p[Replay packets at a given packets/sec]' \
+  '-M[Replay packets at a given Mbps]' \
+  '-t[Replay packets as fast as possible]' \
+  '-o[Replay one packet at a time for each user input]' \
+  '--pps-multi=[Number of packets to send for each time interval]:num pps' \
+  '-P[Print the PID of tcpreplay at startup]' \
+  '--stats=[Print statistics every X seconds]:num x' \
+  '-V[Print version information]' \
+  '-h[Display less usage information and exit]' \
+  '-H[Display usage information and exit]' \
+  '-![Extended usage information passed thru pager]' \
+  '--save-opts=[Save the option state to a config file]:config file' \
+  '--load-opts=[Load options from a config file]:load config' \
+
+  
+case "$state" in
+  list-timings)
+    _values -S : 'TIMINGS' 'select' 'ioport' 'rdtsc' 'gtod' 'nano' 'abstime'
+    ;;
+esac
+
+
