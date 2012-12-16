@@ -1,0 +1,29 @@
+#compdef sctest
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-a[use this argos csi files as input]' \
+  '-b[bind this ip:port]' \
+  '-c[redirect connects to this ip:port]' \
+  '-C[command to execute for "cmd" in shellcode]' \
+  '-d[dump the shellcode (binary) to stdout]' \
+  '-g[run getpc mode, try to detect a shellcode]' \
+  '-G[save a dot formatted callgraph in filepath]' \
+  '-h[guess what?]' \
+  '-i[proxy api calls to the host operating system]' \
+  '-l[list all tests]' \
+  '-o[manual offset for shellcode, accepts int and hexvalues]:OFFSET:->list-offset' \
+  '-p[write shellcode profile to this file]' \
+  '-s[max number of steps to run]' \
+  '-S[read shellcode/buffer from stdin, works with -g]' \
+  '-t[the test to run]' \
+  '-v[be verbose, can be used multiple times, f.e. -vv]' \
+ 
+case "$state" in
+  list-offset)
+    _values -S : 'OFFSET' 'INT' 'HEX'
+    ;;
+esac
+
