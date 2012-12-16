@@ -1,0 +1,44 @@
+#compdef jhead
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '-te[Transfer exif header from another image file <name>]' \
+  '-dc[Delete comment field (as left by progs like Photoshop & Compupic)]' \
+  '-di[Delete IPTC section (from Photoshop, or Picasa)]' \
+  '-dx[Deletex XMP section]' \
+  '-du[Delete non image sections except for Exif and comment sections]' \
+  '-purejpg[Strip all unnecessary data from jpeg]' \
+  '-mkexif[Create new minimal exif section (overwrites pre-existing exif)]' \
+  '-ce[Edit comment field]' \
+  '-cs[Save comment section to a file]' \
+  '-ci[Insert comment section from a file]' \
+  '-cl[Insert literal comment string]' \
+  '-ft[Set file modification time to Exif time]' \
+  '-dsft[Set Exif time to file modification time]' \
+  '-n[Rename files according to date]' \
+  '-a[(Windows only) Rename files with same name but different extension]' \
+  '-ta[Adjust time by h:mm backwards or forwards]' \
+  '-da[Adjust date by large amounts]' \
+  '-ts[Set the Exif internal time to <time>]' \
+  '-ds[Set the Exif internal date]' \
+  '-dt[Remove exif integral thumbnails]' \
+  '-st[Save Exif thumbnail]' \
+  '-rt[Replace Exif thumbnail]' \
+  '-rgt[Regnerate exif thumbnail]' \
+  '-autorot[Invoke jpegtran to rotate images according to Exif orientation tag]' \
+  '-norot[Zero out the rotation tag]' \
+  '-v[even more verbose output]' \
+  '-q[Quiet (no messages on success, like Unix)]' \
+  '-V[Show jhead version]' \
+  '-exifmap[Dump header bytes, annotate.  Pipe thru sort for better viewing]' \
+  '-se[Supress error messages relating to corrupt exif header structure]' \
+  '-c[concise output]' \
+  '-nofinfo[Dont show file info]' \
+  '-model[Only process files from digicam containing model substring in camera model description]' \
+  '-exonly[Skip all files that dont have an exif header]' \
+  '-cmd[Apply command to every file, then re-insert exif and command sections into the image]' \
+  '-orp[Only operate on portrait aspect ratio images]' \
+  '-orl[Only operate on landscape aspect ratio images]' \
