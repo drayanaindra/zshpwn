@@ -1,0 +1,19 @@
+#compdef dnscrypt-proxy
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '-a[what local IP the daemon will listen to, with an optional port (The default port is 53)]' \
+  '-d[detach from the current terminal and run the server in background]' \
+  '-e[transparently add an OPT pseudo-RR to outgoing queries in order to enable the EDNS0 extension mechanism]' \
+  '-k[specify the provider public key]' \
+  '-l[log events to this file instead of the standard output]' \
+  '-n[set the maximum number of simultaneous active requests (The default value is 250)]' \
+  '-p[write the PID number to a file]' \
+  '-r[a DNSCrypt-capable resolver IP address with an optional port (The default port is 443)]' \
+  '-u[chroot(2) to this user´s home directory and drop privileges]' \
+  '-N[the fully-qualified name of the dnscrypt certificate provider]' \
+  '-T[always use TCP]' \
+  '-V[show version number]' \
