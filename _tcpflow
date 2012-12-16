@@ -1,0 +1,36 @@
+#compdef tcpflow
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[guess what?]' \
+  '-a[do ALL processing (http expansion, unzip, create report.xml, PDF analysis, etc..)]' \
+  '-b[max number of bytes per flow to save]' \
+  '-B[force binary output to console, even with -c or -C]' \
+  '-c[console print only (dont create files)]' \
+  '-C[console print only, but without the display of source/dest header]' \
+  '-d[debug level; default is 1]' \
+  '-e[output each flow in alternating colors]' \
+  '-f[maximum number of file descriptors to use]' \
+  '-i[network interface on which to listen]:INTERFACE:_net_interfaces' \
+  '-L[semlock - specifies that writes are locked using a named semaphore]' \
+  '-p[dont use promiscuous mode]' \
+  '-r[read packets from tcpdump pcap file (may be repeated)]' \
+  '-R[read packets from tcpdump pcap file TO FINISH CONNECTIONS]' \
+  '-s[strip non-printable characters (change to '.')]' \
+  '-v[verbose operation equivalent to -d 10]' \
+  '-V[print version number and exit]' \
+  '-o[specify output directory (default '.')]' \
+  '-X[filename : DFXML output to filename]' \
+  '-m[specifies the minimum number of bytes that a stream may skip before starting a new stream (default 16777216)]' \
+  '-Z[do not decompress gzip-compressed HTTP transactions]' \
+  '-E[enable scanner]:ENABLES:->list-enables' \
+  '-x[disable scanner tcpdemux]' \
+  '-P[dont purge tcp connections on FIN (could result in lost data)]' \
+  
+case "$state" in
+  list-enables)
+    _values -S : 'ENABLES' 'http' 'md5' 'netviz'
+    ;;
+esac
