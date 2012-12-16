@@ -1,0 +1,67 @@
+#compdef fimap.py
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '-s[Mode to scan a single URL for FI errors]' \
+  '-m[Mode for mass scanning]' \
+  '-g[Mode to use Google to aquire URLs]' \
+  '-B[Use bing to get URLs]' \
+  '-H[Mode to harvest a URL recursivly for new URLs]' \
+  '-4[fetch all forms and headers found on the site]' \
+  '-b[Enables blind FI-Bug testing when no error messages are printed]' \
+  '-D[Enables dot truncation technique]' \
+  '-M[Multiply terminal symbols like . and / in the path by X]' \
+  '-u[The URL you want to test]:URLS:_urls' \
+  '-l[The URL-LIST you want to test]' \
+  '-q[The Google Search QUERY]' \
+  '--bingkey=[Bing APIKey]:bing api key' \
+  '--skip-pages=[Skip the first X pages from the Googlescanner]:skip weh' \
+  '-p[Define the COUNT of pages to search (-g)]' \
+  '--results=[The count of results the Googlescanner should get per page]:wani piro' \
+  '--googlesleep=[The time in seconds the Googlescanner should wait befor each request to google]:google istirahat' \
+  '-w[The LIST which will be written if you have choosen]' \
+  '-d[Traget crawl recurse level]' \
+  '-P[The POSTDATA you want to send]' \
+  '--cookies=[Define the cookie which should be send with each request]:kue' \
+  '--ttl=[Define the TTL (in seconds) for requests]:bukan detikcom' \
+  '--no-auto-detect[Dont automaticly detect the target language in blind-mode]' \
+  '--bmin=[Minimum count of directories fimap should walk thruin blind mode]:pagi buta' \
+  '--bmax=[maximum count of directories fimap should walk thru]:rabun senja' \
+  '--dot-trunc-min=[The count of dots to begin with in dot-truncation mode]:maunya berapa' \
+  '--dot-trunc-max=[The count of dots to end with in dot-truncation mode]:berapa ya' \
+  '--dot-trunc-step=[The step size for each round in dot-truncation mode]:step size' \
+  '--dot-trunc-ratio=[The maximum ratio to detect if dot truncation was successfull]:maximum ratio' \
+  '--dot-trunc-also-unix[Use this if dot-truncation should also be tested on unix servers]:unix juga' \
+  '--force-os=[Forces fimap to test only files for the OS]:OS:->list-os' \
+  '-x[ Starts an interactive session where you can select a target and do some action]' \
+  '-X[Same as -x but also shows not exploitable which might can be hax0red with plugins]' \
+  '-T[Enables TAB-Completation in exploit mode]' \
+  '--x-host=[The host to use exploits on]:hostname' \
+  '--x-vuln=[The vulnerability ID you want to use]:vuln number' \
+  '--x-cmd=[The CMD you want to execute on the vulnerable system]:execute cmd' \
+  '-A[The User-Agent which should be sent]' \
+  '--http-proxy=[Setup your proxy with this option]:http proxy' \
+  '--show-my-ip[Shows your internet IP]' \
+  '--plugins[List all loaded plugins and quit after that]' \
+  '-I[Shows some official exploit-mode plugins you can install and\or upgrade]' \
+  '--update-def[Checks and updates your definition files found in the config directory]' \
+  '--test-rfi[A quick test to see if you have configured RFI nicely]:test doank' \
+  '--merge-xml=[Another fimap XMLFILE you want to include to your own fimap_result.xml]:merge xml' \
+  '-C[Enables a colorful output. Works only in linux!]' \
+  '--force-run[Ignore the instance check and just run fimap even if a lockfile exists]' \
+  '-v[Verbose level you want to receive]:VERBOSES:->list-verboses' \
+  '--credits[Shows some credits]' \
+  '--greetings[Some greetings ;)]' \
+
+  case "$state" in
+    list-os)
+      _values -S : 'OS' 'linux' 'windows'
+    ;;
+    list-verboses)
+      _values -S : 'VERBOSES' '0[High-Level]' '1[Messages]' '2[Info]' '3[Debug]'
+    ;;
+  esac
+
