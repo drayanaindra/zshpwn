@@ -1,0 +1,38 @@
+#compdef vol.py
+# egeektronic
+
+local curcontext="$curcontext" state line
+typeset -A opt_args
+
+_arguments -C -s \
+  '-h[Guess what?]' \
+  '-d[Debug mode]' \
+  '--conf-file=[User based configuration file]:config' \
+  '--plugins=[Additional plugin directories to use (colon separated)]:PLUGINDIR' \
+  '--info[Print information about all registered objects]' \
+  '--cache-directory=[Directory where cache files are stored]:cache dir' \
+  '--cache[Use caching]' \
+  '--tz=[Sets the timezone for displaying timestamps]:TZ' \
+  '-f[Filename to use when opening an image]' \
+  '--profile=[Name of the profile to load]:PROFILES:->list-profiles' \
+  '-l[A URN location from which to load an address space]' \
+  '-w[Enable write support]' \
+  '--use-old-as[Use the legacy address spaces]' \
+  '--dtb=[DTB Address]:DTB' \
+  '--cache-dtb[Cache virtual to physical mappings]' \
+  '--output=[Output in this format (format support is module specific)]:output' \
+  '--output-file=[write output in this file]:output file' \
+  '-v[Verbose information]' \
+  '-g[Specify a specific KDBG virtual address]' \
+  '-k[Specify a specific KPCR address]' \
+  
+# are we really need description ?
+case "$state" in
+   list-profiles)
+    _values -S : 'PROFILES' 'VistaSP0x64' 'VistaSP0x86' 'VistaSP1x64' 'VistaSP1x86' 'VistaSP2x64' \
+			'VistaSP2x86' 'Win2003SP0x86' 'Win2003SP1x64' 'Win2003SP1x86' 'Win2003SP2x64' 'Win2003SP2x86' \
+			'Win2008R2SP0x64' 'Win2008R2SP1x64' 'Win2008SP1x64' 'Win2008SP1x86' 'Win2008SP2x64' \
+			'Win2008SP2x86' 'Win7SP0x64' 'Win7SP0x86' 'Win7SP1x64' 'Win7SP1x86' 'WinXPSP1x64' \
+			'WinXPSP2x64' 'WinXPSP2x86' 'WinXPSP3x86'
+    ;;
+esac
