@@ -1,0 +1,211 @@
+#compdef msfbinscan msfconsole msfd msfelfscan msfencode msfmachscan msfrpcd msfrpc msfpescan msfrop msfvenom
+# egeektronic
+
+case "$service" in
+  msfbinscan)
+    _arguments \
+      '-h[Guess what?]' \
+      '-j[Search for jump equivalent instructions]' \
+      '-p[Search for pop+pop+ret combinations]' \
+      '-r[Search for regex match]' \
+      '-a[Display the code at the specified address]' \
+      '-b[Display the code at the specified offset]' \
+      '-f[Attempt to identify the packer/compiler]' \
+      '-i[Display detailed information about the image]' \
+      '-R[Rip all module resources to disk]' \
+      '--context-map[Generate context-map files]' \
+      '-A[Number of bytes to show after match (-a/-b)]' \
+      '-B[Number of bytes to show before match (-a/-b)]' \
+      '-I[Specify an alternate ImageBase]' \
+      '-D[Disassemble the bytes at this address]' \
+      '-F[Filter addresses based on a regular expression]'
+  ;;
+  
+  msfconsole)
+    _arguments \
+      '-h[Guess what?]' \
+      '-d[Execute the console as defanged]' \
+      '-r[Execute the specified resource file]' \
+      '-o[Output to the specified file]' \
+      '-c[Load the specified configuration file]' \
+      '-m[Specifies an additional module search path]' \
+      '-p[Load a plugin on startup]' \
+      '-y[Specify a YAML file containing database settings]' \
+      '-M[Specify a directory containing additional DB migrations]' \
+      '-e[Specify the database environment to load from the YAML]:ENV:->list-env' \
+      '-v[Show version]' \
+      '-L[Use the system Readline library instead of RbReadline]' \
+      '-n[Disable database support]' \
+      '-q[Do not print the banner on start up]' \
+      '-x[Execute the specified string as console commands (use ; for multiples)]'
+
+        case "$state" in
+          list-env)
+            _values -S : 'ENV' 'production' 'development'
+          ;;
+        esac
+  ;;
+
+  msfd)
+    _arguments \
+      '-h[Guess what?]' \
+      '-A[Specify list of hosts allowed to connect]' \
+      '-D[Specify list of hosts not allowed to connect]' \
+      '-a[Bind to this IP address instead of loopback]' \
+      '-f[Run the daemon in the foreground]' \
+      '-p[Bind to this port instead of 55554]' \
+      '-s[Use SSL]'
+  ;;
+
+  msfelfscan)
+    _arguments \
+      '-h[Guess what?]' \
+      '-j[Search for jump equivalent instructions]' \
+      '-p[Search for pop+pop+ret combinations]' \
+      '-r[Search for regex match]' \
+      '-a[Display the code at the specified address]' \
+      '-b[Display the code at the specified offset]' \
+      '-A[Number of bytes to show after match (-a/-b)]' \
+      '-B[Number of bytes to show before match (-a/-b)]' \
+      '-I[Specify an alternate ImageBase]'
+  ;;
+
+  msfencode)
+    _arguments \
+      '-h[Guess what?]' \
+      '-a[The architecture to encode as]' \
+      '-b[The list of characters to avoid]' \
+      '-c[The number of times to encode the data]' \
+      '-d[Specify the directory in which to look for EXE templates]' \
+      '-e[The encoder to use]:ENCODERS:->list-encoders' \
+      '-i[Encode the contents of the supplied file path]' \
+      '-k[Keep template working; run payload in new thread (use with -x)]' \
+      '-m[Specifies an additional module search path]' \
+      '-n[Dump encoder information]' \
+      '-o[The output file]' \
+      '-p[The platform to encode for]' \
+      '-s[The maximum size of the encoded data]' \
+      '-t[The output format]:FORMATS:->list-formats' \
+      '-v[Increase verbosity]' \
+      '-x[Specify an alternate executable template]'
+
+        case "$state" in
+          list-encoders)
+            _values -S : 'ENCODERS' 'cmd/generic_sh' 'cmd/ifs' 'cmd/printf_php_mq' \
+                          'generic/none' 'mipsbe/longxor' 'mipsle/longxor' 'php/base64' \
+                          'ppc/longxor' 'ppc/longxor_tag' 'sparc/longxor_tag' 'x64/xor' \
+                          'x86/alpha_mixed' 'x86/alpha_upper' 'x86/avoid_underscore_tolower' \
+                          'x86/avoid_utf8_tolower' 'x86/call4_dword_xor' 'x86/context_cpuid' \
+                          'x86/context_stat' 'x86/context_time' 'x86/countdown' 'x86/fnstenv_mov' \
+                          'x86/jmp_call_additive' 'x86/nonalpha' 'x86/nonupper' 'x86/shikata_ga_nai' \
+                          'x86/single_static_bit' 'x86/unicode_mixed' 'x86/unicode_upper'
+          ;;
+          list-formats)
+            _values -S : 'FORMATS' 'raw' 'ruby' 'rb' 'perl' 'pl' 'bash' 'sh' 'c' 'js_be' 'js_le' \
+                          'java' 'dll' 'exe' 'exe-small' 'elf' 'macho' 'vba' 'vba-exe' 'vbs' \
+                          'loop-vbs' 'asp' 'aspx' 'war' 'psh' 'psh-net'
+          ;;
+        esac
+  ;;
+
+  msfmachscan)
+    _arguments \
+      '-h[Guess what?]' \
+      '-j[Search for jump equivalent instructions]' \
+      '-p[Search for pop+pop+ret combinations]' \
+      '-r[Search for regex match]' \
+      '-A[Number of bytes to show after match (-a/-b)]' \
+      '-B[Number of bytes to show before match (-a/-b)]' \
+      '-I[Specify an alternate ImageBase]'
+  ;;
+
+  msfrpcd)
+    _arguments \
+      '-h[Guess what?]' \
+      '-P[Specify the password to access msfrpcd]' \
+      '-S[Disable SSL on the RPC socket]' \
+      '-U[Specify the username to access msfrpcd]' \
+      '-a[Bind to this IP address]' \
+      '-f[Run the daemon in the foreground]' \
+      '-p[Bind to this port instead of 55553]' \
+      '-n[Disable database]' \
+      '-u[URI for Web server]'
+  ;;
+
+  msfrpc)
+    _arguments \
+      '-h[Guess what?]' \
+      '-P[Specify the password to access msfrpcd]' \
+      '-S[Disable SSL on the RPC socket]' \
+      '-U[Specify the username to access msfrpcd]' \
+      '-a[Connect to this IP address]' \
+      '-p[Connect to the specified port instead of 55553]' \
+      '-n[Disable database]' \
+      '-t[Type of RPC daemon]:TYPES:->list-types'
+
+        case "$state" in
+          list-types)
+            _values -S : 'TYPES' 'XML' 'Msg'
+          ;;
+        esac
+  ;;
+
+  msfpescan)
+    _arguments \
+      '-h[Guess what?]' \
+      '-j[Search for jump equivalent instructions]' \
+      '-p[Search for pop+pop+ret combinations]' \
+      '-r[Search for regex match]' \
+      '-a[Display the code at the specified address]' \
+      '-b[Display the code at the specified offset]' \
+      '-f[Attempt to identify the packer/compiler]' \
+      '-i[Display detailed information about the image]' \
+      '-R[Rip all module resources to disk]' \
+      '--context-map[Generate context-map files]' \
+      '-M[The targets are memdump.exe directories]' \
+      '-A[Number of bytes to show after match (-a/-b)]' \
+      '-B[Number of bytes to show before match (-a/-b)]' \
+      '-D[Disassemble the bytes at this address]' \
+      '-F[Filter addresses based on a regular expression]' \
+      '-I[Specify an alternate ImageBase]'
+  ;;
+
+  msfrop)
+    _arguments \
+      '-h[Guess what?]' \
+      '-d[Number of maximum bytes to backwards disassemble from return instructions]' \
+      '-s[Search for gadgets matching a regex, match intel syntax or raw bytes]' \
+      '-n[Disable color. Useful for piping to other tools like the less and more commands]' \
+      '-x[Export gadgets to CSV format]' \
+      '-i[Import gadgets from previous collections]' \
+      '-v[Output very verbosely]'
+  ;;
+
+  msfvenom)
+    _arguments \
+      '-p[Payload to use. Specify a '-' or stdin to use custom payloads]' \
+      '-l[List a module type]:LISTS:->list-lists' \
+      '-n[Prepend a nopsled of (length) size on to the payload]' \
+      '-f[Output format]:OUTPUTS:->list-outputs' \
+      '-a[The architecture to use]' \
+      '--platform[The platform of the payload]' \
+      '-s[The maximum size of the resulting payload]' \
+      '-b[The list of characters to avoid]' \
+      '-i[The number of times to encode the payload]' \
+      '-c[Specify an additional win32 shellcode file to include]' \
+      '-x[Specify a custom executable file to use as a template]' \
+      '-k[Preserve the template behavior and inject the payload as a new thread]' \
+      '-o[List the payloads standard options]'
+
+        case "$state" in
+          list-lists)
+            _values -S : 'LISTS' 'all' 'payloads' 'encoders' 'nops'
+          ;;
+          list-outputs)
+            _values -S : 'OUTPUTS' 'raw' 'ruby' 'rb' 'perl' 'pl' 'bash' 'sh' 'c' 'js_be' 'js_le' \
+                          'java' 'dll' 'exe' 'exe-small' 'elf' 'macho' 'vba' 'vba-exe' 'vbs' \
+                          'loop-vbs' 'asp' 'aspx' 'war' 'psh' 'psh-net'
+          ;;
+        esac
+  ;;
+esac
