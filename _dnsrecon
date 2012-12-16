@@ -1,0 +1,30 @@
+#compdef dnsrecon.py
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '-d[Domain to Target for enumeration]' \
+  '-r[IP Range for reverse look-up brute force]' \
+  '-n[Domain server to use]' \
+  '-D[Dictionary file of sub-domain and hostnames to use for brute force]' \
+  '-f[Filter out of Brute Force Domain lookup records that resolve to the wildcard defined IP Address when saving records]' \
+  '-t[Specify the type of enumeration to perform]:TYPES:->list-types' \
+  '-a[Perform AXFR with the standard enumeration]' \
+  '-s[Perform Reverse Look-up of ipv4 ranges in the SPF Record of the targeted domain with the standard enumeration]' \
+  '-g[Perform Google enumeration with the standard enumeration]' \
+  '-w[Do deep whois record analysis and reverse look-up of IP ranges found thru whois when doing standard query]' \
+  '-z[Performs a DNSSEC Zone Walk with the standard enumeration]' \
+  '--threads[Number of threads]' \
+  '--lifetime[Time to wait for a server to response to a query]' \
+  '--db[SQLite 3 file to save found records]' \
+  '--xml[XML File to save found records]' \
+  '-c[Comma separated value file]' \
+  '-v[Show attempts in the bruteforce modes]' \
+  
+case "$state" in
+  list-types)
+    _values -S : 'TYPES' 'std' 'rv1' 'brt' 'srv' 'axfr' 'goo' 'snoop' 'tld' 'zonewalk'
+    ;;
+esac
