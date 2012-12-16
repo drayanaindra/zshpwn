@@ -1,0 +1,246 @@
+#compdef radare2 rahash2 rax2 radiff2 rafind2 ragg2 rasm2 ragg2-cc rabin2
+# egeektronic
+
+case "$service" in
+  radare2)
+    _arguments \
+      '-h[show help message, -hh for long]' \
+      '-hh[Search for jump equivalent instructions]' \
+      '-a[set asm.arch eval var]' \
+      '-b[set asm.bits eval var]' \
+      '-B[initial block size]' \
+      '-c[execute radare command]' \
+      '-d[use file as a program to debug]' \
+      '-D[enable debug mode (e cfg.debug=true)]' \
+      '-e[evaluate config var]' \
+      '-f[block size = file size]' \
+      '-i[run script file]' \
+      '-l[load plugin file]' \
+      '-L[list supported IO plugins]' \
+      '-n[disable analysis]' \
+      '-N[disable user settings]' \
+      '-q[quiet mode (no prompt) and quit after -i]' \
+      '-p[set project file]' \
+      '-P[apply rapatch file and quit]' \
+      '-s[initial seek]' \
+      '-m[map file at given address]' \
+      '-t[load rabin2 info in thread]' \
+      '-v[show radare2 version]' \
+      '-w[open file in write mode]'
+  ;;
+  
+  rahash2)
+    _arguments \
+      '-h[Guess what?]' \
+      '-a[comma separated list of algorithms]:ALGO:->list-algo' \
+      '-b[specify the size of the block (instead of full file)]' \
+      '-B[show per-block hash]' \
+      '-s[hash this string instead of files]' \
+      '-f[start hashing at given address]' \
+      '-t[stop hashing at given address]' \
+      '-r[output radare commands]' \
+      '-v[show version information]'
+
+        case "$state" in
+          list-algo)
+            _values -s , 'ALGO' 'md4' 'md5' 'sha1' 'sha256' 'sha384' 'sha512' 'crc16' \
+                        'crc32' 'xor' 'xorpair' 'parity' 'mod255' 'hamdist' 'entropy' 'pcprint'
+          ;;
+        esac 
+  ;;
+
+  rax2)
+    _arguments \
+      '-h[guess what?]' \
+      '-e[swap endianness]' \
+      '-d[force integer]' \
+      '-f[floating point]' \
+      '-b[binstr -> bin]' \
+      '-s[hexstr -> raw]' \
+      '-S[raw -> hexstr]' \
+      '-v[version]' \
+      '-x[hash string]' \
+      '-k[keep base]'
+  ;;
+
+  radiff2)
+    _arguments \
+      '-c[count of changes]' \
+      '-C[graphdiff code]' \
+      '-O[force integer]' \
+      '-t[set threshold for code diff (default is 70%)]' \
+      '-d[use delta diffing]' \
+      '-g[graph diff of given symbol]' \
+      '-r[output in radare commands]' \
+      '-s[compute text distance]' \
+      '-p[use physical addressing (io.va=0)]' \
+      '-v[show version information]'
+  ;;
+
+  rafind2)
+    _arguments \
+      '-h[guess what?]' \
+      '-z[search for zero-terminated strings]' \
+      '-s[search for a specific string (can be used multiple times)]' \
+      '-e[search for regular expression string matches]' \
+      '-x[search for hexpair string (909090) (can be used multiple times)]' \
+      '-m[set a binary mask to be applied on keywords]' \
+      '-f[start searching from address from]' \
+      '-t[stop search at address to]' \
+      '-X[show hexdump of search results]' \
+      '-n[do not stop on read errors]' \
+      '-r[print using radare commands]' \
+      '-b[set block size]' \
+      '-v[print version and exit]'
+  ;;
+
+  ragg2)
+    _arguments \
+      '-a[select architecture]:ARCH:->list-arch' \
+      '-b[register size]:REGISTERS:->list-registers' \
+      '-k[operating systems kernel]:OS:->list-os' \
+      '-f[output format]:FORMATS:->list-formats' \
+      '-F[output native format (osx=mach0, linux=elf, ..)]' \
+      '-o[output file]' \
+      '-O[use default output file (filename without extension or a.out)]' \
+      '-I[add include path]' \
+      '-i[include shellcode plugin]:SHELLCODES:->list-shellcodes' \
+      '-e[use specific encoder]:ENCODERS:->list-encoders' \
+      '-B[append some hexpair bytes]' \
+      '-c[set configuration options]' \
+      '-C[append contents of file]' \
+      '-d[patch dword (4 bytes) at given offset]' \
+      '-D[patch qword (8 bytes) at given offset]' \
+      '-w[patch hexpairs at given offset]' \
+      '-p[add padding after compilation]' \
+      '-s[show assembler]' \
+      '-r[show raw bytes instead of hexpairs]' \
+      '-x[execute]' \
+      '-v[show version]'
+
+        case "$state" in
+          list-arch)
+              _values -S : 'ARCH' 'x86' 'arm'
+            ;;
+          list-registers)
+              _values -S : 'REGISTERS' '32' '64'
+            ;;
+          list-os)
+              _values -S : 'OS' 'linux' 'bsd' 'osx' 'w32'
+            ;;
+          list-formats)
+              _values -S : 'FORMATS' 'raw' 'pe' 'elf' 'mach0'
+            ;;
+          list-shellcodes)
+              _values -S : 'SHELLCODES' 'exec[execute cmd=/bin/sh suid=false]'
+            ;;
+          list-encoders)
+              _values -S : 'SHELLCODES' 'xor[xor encoder for shellcode]'
+            ;;
+        esac
+  ;;
+
+  rasm2)
+    _arguments \
+      '-d[Disassemble from hexpair bytes]' \
+      '-D[Disassemble showing hexpair and opcode]' \
+      '-F[Specify input and/or output filters (att2intel, x86.pseudo, ...)]' \
+      '-f[Read data from file]' \
+      '-o[Set start address for code (default 0)]' \
+      '-a[Set assemble/disassemble plugin]:INVALID:->list-invalid' \
+      '-b[Set cpu register size in bits]:CPUS:->list-cpus' \
+      '-s[Select syntax]:SYNTAXS:->list-syntaxs' \
+      '-B[Binary input/output (-l is mandatory for binary input)]' \
+      '-l[Input/Output length]' \
+      '-C[Output in C format]' \
+      '-e[Use big endian]' \
+      '-v[Show version information]'
+
+        case "$state" in
+          list-cpus)
+            _values -S : 'CPUS' '16' '32' '64'
+          ;;
+          list-syntaxs)
+            _values -S : 'SYNTAXS' 'att' 'intel'
+          ;;
+          list-invalid)
+            _values -S : 'INVALID' 'arc' 'arm' 'arm.winedbg' 'avr' 'bf' \
+                          'csr' 'dalvik' 'dcpu16' 'i8080' 'java' 'm68k' \
+                          'mips' 'msil' 'ppc' 'rar' 'sh' 'sparc' 'x86' \
+                          'x86.nz' 'x86.olly' 'z80'
+          ;;
+        esac
+  ;;
+
+  ragg2-cc)
+    _arguments \
+      '-d[enable debug mode]' \
+      '-a[set arch]:SETS:->list-sets' \
+      '-b[bits]:BIT:->list-bit' \
+      '-k[set kernel]:KERNELS:->list-kernels' \
+      '-o[set output file]' \
+      '-s[generate assembly]' \
+      '-c[generate compiled shellcode]' \
+      '-x[show hexpair bytes]' \
+      '-v[show version information]'
+
+        case "$state" in
+          list-sets)
+            _values -S : 'SETS' 'x86' 'arm'
+          ;;
+          list-bit)
+            _values -S : 'BIT' '32' '64'
+          ;;
+          list-kernels)
+            _values -S : 'KERNELS' 'darwin' 'linux'
+          ;;
+        esac
+  ;;
+
+  rabin2)
+    _arguments \
+      '-h[guess what?]' \
+      '-@[show section, symbol or import at addr]' \
+      '-a[set arch]:LAGI:->list-lagi' \
+      '-b[set bits]:DOH:->list-doh' \
+      '-B[override baddr]' \
+      '-c[create (elf,mach0,pe) with Code and Data hexpairs]' \
+      '-C[list classes]' \
+      '-d[show debug/dwarf information]' \
+      '-e[entrypoint]' \
+      '-f[select sub-bin named str]' \
+      '-H[header fields]' \
+      '-i[imports (symbols imported from libraries)]' \
+      '-I[binary info]' \
+      '-j[output in json]' \
+      '-l[linked libraries]' \
+      '-L[list supported bin plugins]' \
+      '-m[show source line at addr]' \
+      '-M[main (show address of main symbol)]' \
+      '-n[show section, symbol or import named str]' \
+      '-N[force minimum number of chars per string (see -z)]' \
+      '-o[output file/folder for write operations (out by default)]' \
+      '-O[write/extract operations (-O help)]' \
+      '-q[be quiet, just show fewer data]' \
+      '-r[radare output]' \
+      '-R[relocations]' \
+      '-s[symbols (exports)]' \
+      '-S[sections]' \
+      '-v[use vaddr in radare output]' \
+      '-V[show version information]' \
+      '-x[extract bins contained in file]' \
+      '-Z[size of binary]' \
+      '-z[strings]'
+
+        case "$state" in
+          list-lagi)
+            _values -S : 'LAGI' 'x86' 'arm'
+          ;;
+          list-doh)
+            _values -S : 'DOH' '32' '64'
+          ;;
+        esac
+  ;;
+
+esac
+
