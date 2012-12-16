@@ -1,0 +1,20 @@
+#compdef scalpel
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '-b[Carve files even if defined footers arent discovered within maximum carve size for file type]' \
+  '-c[Choose configuration file]' \
+  '-d[Generate header/footer database]' \
+  '-e[Do nested header/footer matching]' \
+  '-i[Read names of disk images from specified file]' \
+  '-n[Dont add extensions to extracted files]' \
+  '-o[Set output directory for carved files]' \
+  '-O[Dont organize carved files by type]' \
+  '-p[Perform image file preview]' \
+  '-q[Carve only when header is cluster-aligned]' \
+  '-r[Find only first of overlapping headers/footers]' \
+  '-V[Print copyright information and exit]' \
+  '-v[Verbose mode]' \
