@@ -1,0 +1,34 @@
+#compdef padBuster.pl
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-auth[HTTP Basic Authentication]' \
+  '-bruteforce[Perform brute force against the first block]' \
+  '-ciphertext[CipherText for Intermediate Bytes (Hex-Encoded)]' \
+  '-cookies[Cookies (name1=value1; name2=value2)]' \
+  '-encoding[Encoding Format of Sample]:ENCODE:->list-encode' \
+  '-encodedtext[Data to Encrypt (Encoded)]' \
+  '-error[Padding Error Message]' \
+  '-headers[Custom Headers (name1::value1;name2::value2)]' \
+  '-interactive[Prompt for confirmation on decrypted bytes]' \
+  '-intermediate[Intermediate Bytes for CipherText (Hex-Encoded)]' \
+  '-log[Generate log files]' \
+  '-noencode[Do not URL-encode the payload]' \
+  '-noiv[Sample does not include IV]' \
+  '-plaintext[Plain-Text to Encrypt]' \
+  '-post[HTTP Post Data String]' \
+  '-prefix[Prefix bytes to append to each sample]' \
+  '-proxy[Use HTTP/S Proxy]' \
+  '-proxyauth[Proxy Authentication]' \
+  '-resume[Resume at this block number]' \
+  '-usebody[Use response body content for response analysis phase]' \
+  '-verbose[Be Verbose]' \
+  '-veryverbose[Be Very Verbose (Debug Only)]' \
+
+case "$state" in
+  list-encode)
+    _values -S : 'ENCODE' '0[Base64]' '1[Lower HEX]' '2[Upper HEX]' '3[.NET UrlToken]' '4[WebSafe Base64]'
+    ;;
+esac
