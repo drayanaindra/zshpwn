@@ -1,0 +1,30 @@
+#compdef binwalk
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-v[Enable verbose mode]' \
+  '-o[File offset to start searching at]' \
+  '-l[Number of bytes to search]' \
+  '-b[Set byte alignment]' \
+  '-f[Log results to file]' \
+  '-m[Magic file to use]' \
+  '-g[Only display results that contain the text <string>]' \
+  '-r[Search for a sequence of raw bytes inside the target file (implies -a, -d, -I)]' \
+  '-y[Only search for matches that have <filter> in their description (implies -t, -d, -k)]' \
+  '-x[Exclude matches that have <filter> in their description]' \
+  '-i[Include matches that are normally excluded and that have <filter> in their description]' \
+  '-D[Extract <count> number of entries whose descriptions match <type> and save them with the file extension <ext>]' \
+  '-a[Search for all matches, including those that are normally excluded]' \
+  '-d[Speed up scan by disabling default filters]' \
+  '-I[Show results marked as invalid]' \
+  '-t[Speed up scan by only loading signatures specified by -i or -y]' \
+  '-u[Update magic signature files]' \
+  '-s[Disable smart matching (implies -a)]' \
+  '-S[Disable smart signature support]' \
+  '-k[Dont stop at the first match (implies -I)]' \
+  '-c[Validate magic file]' \
+  '-q[Supress output to stdout]' \
+  '-A[Scan for executable code (implies -a)]' \
+  '-C[Cast file contents as various data types (implies -k)]' \
