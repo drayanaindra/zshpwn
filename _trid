@@ -1,0 +1,14 @@
+#compdef trid
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-?[Guess what?]' \
+  '-ae[Add guessed extension to filename]' \
+  '-ce[Change filename extension]' \
+  '-d[Use the specified defs package]' \
+  '-ns[Disable unique strings check]' \
+  '-r[Display the first nn matches (default: 5)]' \
+  '-v[Verbose mode - display def name, author, etc]' \
+  '-w[Wait for a key before exiting]' \
