@@ -1,0 +1,34 @@
+#compdef upx
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[guess what?]' \
+  '-1[compress faster]' \
+  '--best[compress best (can be slow for big files)]' \
+  '-d[decompress]' \
+  '-t[test compressed file ]' \
+  '-9[compress better]' \
+  '-l[list compressed file]' \
+  '-V[display version number]' \
+  '-L[display software license]' \
+  '-q[be quiet]' \
+  '-o[write output to 'FILE']' \
+  '-v[be verbose]' \
+  '-f[force compression of suspicious files]' \
+  '--no-color[change look]' \
+  '--mono[change look]' \
+  '--color[change look]' \
+  '--no-progress[change look]' \
+  '--brute[try all available compression methods & filters (slow)]' \
+  '--ultra-brute[try even more compression variants (very slow)]' \
+  '-k[keep backup files]' \
+  '--no-backup[no backup files (default)]' \
+  '--overlay=[overlay]:OVERLAYS:->list-overlays' \
+ 
+case "$state" in
+  list-overlays)
+    _values -S : 'OVERLAYS' 'copy' 'skip' 'strip'
+    ;;
+esac
