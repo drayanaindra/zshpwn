@@ -1,0 +1,115 @@
+#compdef nasl nessus nessuscmd nessus-fetch nessusd
+# egeektronic
+
+case "$service" in
+  nasl)
+    _arguments \
+      '-h[Guess what?]' \
+      '-W[Display extra warnings when compiling the script]' \
+      '-S[Generate a signed .nasl file]' \
+      '-X[Run the script in authenticated mode]' \
+      '-L[lint the script (extended checks)]' \
+      '-V[Show the script ID, script name, etc.... (use twice for description)]' \
+      '-T[Trace the script execution]' \
+      '-t[Execute the scripts against the target(s) host]' \
+      '-k[Load the KB file <file> in the KB]' \
+      '-K[Load the KB file <file> in the KB, and write back changes]' \
+      '-D[Run the description part only]' \
+      '-s[Specifies that the script should be run with safe checks enabled]' \
+      '-a[Turn on the audit trail]' \
+      '-v[Shows the version number]'
+  ;;
+  nessus)
+    _arguments \
+      '-h[Guess what?]' \
+      '-v[shows version number]' \
+      '-T[Output format]:FORMATS:->list-formats' \
+      '-V[make the batch mode display status messages to the screen]' \
+      '-q[batch mode]' \
+      '-x[override SSL "paranoia" question preventing nessus from checking certificates]' \
+      '--dot-nessus[.nessus file to use]' \
+      '--policy-name[Name of the policy to use within a scan]' \
+      '--list-policies[List the policies available in a .nessus file]' \
+      '--list-reports[List the reports available in a .nessus file]' \
+      '--target-file[Override the targets listed in the .nessus]' \
+      '-l[Display license information]' \
+      '-p[obtain list of plugins installed on the server]' \
+      '-P[obtain list of server and plugin preferences]' \
+      '-S[issue SQL output for -p and -P (experimental)]'
+
+        case "$state" in
+          list-formats)
+            _values -S : 'FORMATS' 'nbe' 'html' 'nessus' 'txt'
+          ;;
+        esac
+  ;;
+  nessuscmd)
+    _arguments \
+      '-h[Guess what?]' \
+      '-p[Enable the port scanner and scan this port range]' \
+      '-sT[Perform a TCP connect()]' \
+      '-sS[Perform a SYN scan]' \
+      '-sP[Perform a PING scan]' \
+      '-O[Enable OS Fingerprinting)]' \
+      '-PO[Do not ping the remote hosts prior to a scan]' \
+      '-PI[Do an ICMP ping]' \
+      '-PT[Do a TCP ping]' \
+      '-PA[Do an ARP ping]' \
+      '-i[Enable plugin]' \
+      '-N[do NOT enable plugin dependencies]' \
+      '-V[Display the complete report of the plugins]' \
+      '-q[Only display whether a plugin matches or not]' \
+      '-U[DISABLE safe checks]' \
+      '--smb-login[SMB login]' \
+      '--smb-password[SMB password to use]' \
+      '--smb-domain[SMB domain to log into]' \
+      '--smbi[Interactively ask for SMB credentials]' \
+      '--ssh-login[SSH login]' \
+      '--ssh-password[SSH password to use]' \
+      '--ssh-pubkey[SSH public key to use]' \
+      '--ssh-privkey[SSH private key to use]' \
+      '--ssh-passphrase[Passphrase for the SSH key to use]' \
+      '--sshi[Interactively ask for SSH credentials]' \
+      '--cleartext-login[Clear text login]' \
+      '--cleartext-password[Clear text password to use]' \
+      '--unix-audit[.audit file to use for the local Unix compliance checks]' \
+      '--windows-audit[.audit file to use for the local Windows compliance checks]' \
+      '--remote[Connect to the remote Nessus host]' \
+      '--remote-port[Connect to the remote Nessus on port]' \
+      '--login[Connect to the remote Nessus with the login]' \
+      '--password[Connect to the remote Nessus with the password]' \
+      '-v[Be verbose during the scan]' \
+      '--recv-timeout[Plugins recv() timeout]' \
+      '--max-hosts[Number of hosts to scan in parallel]' \
+      '-o[nessusd option]' \
+      '-f[use an alternative Unix socket]'
+  ;;
+  nessus-fetch)
+    _arguments \
+      '--version' \
+      '--register' \
+      '--register-offline' \
+      '--check' \
+      '--code-in-use' \
+      '--challenge' \
+      '--security-center' \
+      '--extract'
+  ;;
+  nessusd)
+    _arguments \
+      '-h[Guess what?]' \
+      '-a[listen on <address>]' \
+      '-S[send packets with a source IP]' \
+      '-p[use port number <number>]' \
+      '--ipv4-only[Only listen on an IPv4 socket]' \
+      '--ipv6-only[Only listen on an IPv6 socket]' \
+      '-c[alternate configuration file to use]' \
+      '-d[dumps the nessusd compilation options]' \
+      '-q[quiet (do not issue any message to stdout)]' \
+      '-R[Force a re-processing of the plugins]' \
+      '-t[Check the timestamp of each plugin when starting up]' \
+      '-K[Sets the scanner master password (read the documentation about this!)]' \
+      '-l[Display license information]' \
+      '-v[shows version number]'
+  ;;
+esac
