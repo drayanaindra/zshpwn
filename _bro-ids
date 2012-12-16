@@ -1,0 +1,42 @@
+#compdef bro
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-b[dont load scripts from the base/ directory]' \
+  '-d[activate policy file debugging]' \
+  '-e[augment loaded policies by given code]' \
+  '-f[tcpdump filter]' \
+  '-g[dump current config into .state dir]' \
+  '-h[Guess what?]' \
+  '-i[read from given interface]:INTERFACE:_net_interfaces' \
+  '-p[add given prefix to policy file resolution]' \
+  '-r[read from given tcpdump file]' \
+  '-y[read from given flow file]' \
+  '-Y[read flow from socket]' \
+  '-?[Guess what?]' \
+  '-s[read rules from given file]' \
+  '-t[activate execution tracing]' \
+  '-w[write to given tcpdump file]' \
+  '-v[print version and exit]' \
+  '-x[print contents of state file]' \
+  '-z[run the specified policy file analysis]' \
+  '-C[ignore checksums]' \
+  '-D[DFA state cache size]' \
+  '-F[force DNS]' \
+  '-I[print out given ID]' \
+  '-K[set key for MD5-keyed hashing]' \
+  '-L[benchmark for rules]' \
+  '-O[optimize policy script]' \
+  '-P[prime DNS]' \
+  '-R[replay events]' \
+  '-S[enable rule debugging]' \
+  '-T[set RE_level for rules]' \
+  '-U[Record process status in file]' \
+  '-W[activate watchdog timer]' \
+  '-Z[generate documentation for all loaded scripts]' \
+  '--pseudo-realtime=[enable pseudo-realtime for performance evaluation (default 1)]:pseudo time' \
+  '--load-seeds[load seeds from given file]' \
+  '--save-seeds[save seeds to given file]' \
+  '--use-binpac[use new-style BinPAC parsers when available]' \
