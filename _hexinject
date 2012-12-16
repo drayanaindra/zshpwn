@@ -1,0 +1,28 @@
+#compdef hexinject
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[guess what?]' \
+  '-s[sniff mode]' \
+  '-p[inject mode]' \
+  '-r[raw mode (instead of the default hexadecimal mode)]' \
+  '-i[network device to use]:INTERFACES:_net_interfaces' \
+  '-f[custom pcap filter]' \
+  '-c[number of packets to capture]' \
+  '-t[sleep time in microseconds (default 100)]' \
+  '-C[disable automatic packet checksum]' \
+  '-S[disable automatic packet size]' \
+  '-P[disable promiscuous mode]' \
+  '-M[put the wireless interface in monitor mode]' \
+  '-x[convert raw input to hexstring]' \
+  '-y[convert hexstring input to raw]' \
+  '-D[enable disassembling (pretty printing) of packets]' \
+  '-L[pretty print an example packet]:TYPES:->list-types' \
+
+  case "$state" in
+    list-types)
+      _values -S : 'TYPES' 'tcp' 'udp' 'icmp' 'arp'
+    ;;
+  esac
