@@ -1,0 +1,18 @@
+#compdef graudit
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '-A[scan ALL files]' \
+  '-c[<num> number of lines of context to display, default is 2]' \
+  '-d[<db> database to use]' \
+  '-C[Show  the  column  number]' \
+  '-i[case in-sensitive search]' \
+  '-l[lists databases available]' \
+  '-L[vim friendly lines]' \
+  '-v[prints version number]' \
+  '-x[exclude these files]' \
+  '-z[supress colors]' \
+  '-Z[high contrast colors]' \
