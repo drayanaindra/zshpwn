@@ -1,0 +1,20 @@
+#compdef sploitego
+# egeektronic
+
+
+typeset -a actions
+	actions=(
+		'create-package:Creates a Sploitego transform package skeleton'
+		'create-transform:Creates a new transform in the specified directory and auto-updates __init__.py'
+		'csv2sheets:Convert mixed entity type CSVs to separated CSV sheets'
+		'debug-transform:Runs Sploitego local transforms in a terminal-friendly fashion'
+		'delete-transform:Deletes a transform in the specified directory and auto-updates __init__.py'
+		'install-package:Installs and configures sploitego transform packages in Maltegos UI'
+		'list-commands:Lists all the available sploitego commands'
+		'mtgx2csv:Convert Maltego graph files (*.mtgx) to comma-separated values (CSV) file'
+		'rename-transform:Renames a transform in the specified directory and auto-updates __init__.py'
+		'run-transform:Runs Sploitego local transforms in a terminal-friendly fashion'
+		'shell:Creates a Sploitego debug shell for the specified transform package'
+		'uninstall-package:Uninstalls and unconfigures sploitego transform packages in Maltegos UI'
+	)
+_describe action actions
