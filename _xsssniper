@@ -1,0 +1,20 @@
+#compdef xsssniper.py
+# egeektronic
+
+local curcontext="$curcontext" state line
+typeset -A opt_args
+
+_arguments -C -s \
+  '-h[guess what?]' \
+  '-u[target URL]:URLS:_urls' \
+  '--post[try a post request to target url]' \
+  '--data=[post data to use]:post data' \
+  '--threads=[number of threads]:threads num' \
+  '--http-proxy=[scan behind given proxy]:http proxy' \
+  '--tor[scan behind default Tor]' \
+  '--crawl[crawl target url for other links to test]' \
+  '--forms[crawl target url looking for forms to test]' \
+  '--user-agent=[user agent]:user agent' \
+  '--random-agent[perform scan with random user agents]' \
+  '--cookie[use a cookie to perform scans]:cookies' \
+  '--dom[basic heuristic to detect dom xss]' \
