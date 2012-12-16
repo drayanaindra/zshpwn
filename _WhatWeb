@@ -1,0 +1,62 @@
+#compdef whatweb
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '-i[Identify URLs found in FILE]' \
+  '--url-prefix[Add a prefix to target URLs]' \
+  '--url-suffix[Add a suffix to target URLs]' \
+  '--url-pattern[Insert the targets into a URL]' \
+  '-a=[The aggression level controls the trade-off between speed/stealth and reliability]:LEVELS:->list-levels' \
+  '-U=[Identify as AGENT instead of WhatWeb/0.4.8-dev]:user agent' \
+  '-H[Add an HTTP header]' \
+  '--follow-redirect=[Control when to follow redirects]:FOLLOWS:->list-follows' \
+  '--max-redirects=[Maximum number of contiguous redirects]:max num' \
+  '-u[HTTP basic authentication]' \
+  '-c[Provide cookies, e.g. "name=value; name2=value2"]' \
+  '-l[List all plugins]' \
+  '-p=[Select plugins]:plugin' \
+  '-I=[Display detailed information for plugins]:plugin detail' \
+  '-g=[Search for STRING in HTTP responses]' \
+  '--custom-plugin=[Define a custom plugin named Custom-Plugin]:custom plugin' \
+  '--dorks=[List google dorks for the selected plugin]:google dork' \
+  '-e=[Update the target list with example URLs from the selected plugins]:update list' \
+  '-v[Verbose output includes plugin descriptions. Use twice for debugging]' \
+  '--color=[control whether colour is used]:HIGHLIGHT:->list-when' \
+  '-q[Do not display brief logging to STDOUT]' \
+  '--no-errors[Suppress error messages]' \
+  '--log-brief=[Log brief, one-line output]:log brief' \
+  '--log-verbose=[Log verbose output]:log verbose' \
+  '--log-xml=[Log XML format]:log xml' \
+  '--log-json=[Log JSON format]:log json' \
+  '--log-json-verbose=[Log JSON Verbose format]:log json' \
+  '--log-magictree=[Log MagicTree XML format]:log magic' \
+  '--log-object=[Log Ruby object inspection format]:log object' \
+  '--log-mongo-database[Name of the MongoDB database]' \
+  '--log-mongo-collection[Name of the MongoDB collection]' \
+  '--log-mongo-host[MongoDB hostname or IP address]' \
+  '--log-mongo-username[MongoDB username]' \
+  '--log-mongo-password[MongoDB password]' \
+  '--log-errors=[Log errors]:log error' \
+  '-t[Number of simultaneous threads]' \
+  '--open-timeout[Time in seconds]' \
+  '--read-timeout[Time in seconds]' \
+  '--wait=[Wait SECONDS between connections]:tunggu bentar' \
+  '--debug[Raise errors in plugins]' \
+  '--version[Display version information]' \
+ 
+case "$state" in
+  list-levels)
+    _values -S : 'LEVELS' '1[Makes one HTTP request per target. Also follows redirects]' \
+                  '2[Unused]' '3[Can make a handful of HTTP requests per target]' \
+                  '4[Makes a lot of HTTP requests per target]'
+    ;;
+  list-folows)
+    _values -S : 'FOLOWS' 'never' 'http-only' 'meta-only' 'same-site' 'same-domain' 'always'
+    ;;
+  list-when)
+    _values -S : 'HIGHLIGHT' 'never' 'always' 'auto'
+    ;;
+esac
