@@ -1,0 +1,40 @@
+#compdef hydra
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-R[restore a previous aborted/crashed session]' \
+  '-S[perform an SSL connect]' \
+  '-s[if the service is on a different default port, define it here]' \
+  '-l[login name]' \
+  '-L[login file]' \
+  '-p[try password PASS]' \
+  '-P[password file]' \
+  '-x[password bruteforce generation, type "-x -h" to get help]' \
+  '-e[try]:TRYS:->list-trys' \
+  '-u[loop around users, not passwords (effective! implied with -x)]' \
+  '-C[colon separated "login:pass" format, instead of -L/-P options]' \
+  '-M[list of servers to be attacked in parallel, one entry per line]' \
+  '-o[write found login/password pairs to FILE instead of stdout]' \
+  '-f[exit when a login/pass pair is found]' \
+  '-w[waittime for responses (32s) / between connects per thread]' \
+  '-6[prefer IPv6 addresses]' \
+  '-4[prefer IPv4 addresses]' \
+  '-v[verbose mode / show login+pass combination for each attempt]' \
+  '-V[verbose mode / show login+pass combination for each attempt]' \
+  '-U[service module usage details]:SERVICES:->list-services' \
+ 
+case "$state" in
+  list-trys)
+    _values -s : 'TRYS' 'n[null password]' 's[login as pass and/or]' 'r[reversed login]'
+    ;;
+  list-services)
+    _values -S : 'SERVICES' 'cisco' 'cisco-enable' 'cvs' 'ftp' 'ftps' 'http-head' 'https-head' \
+                'http-get' 'https-get' 'http-post' 'https-post' 'http-post-form' 'https-post-form' \
+                'http-proxy' 'http-proxy-urlenum' 'icq' 'imap' 'imaps' 'irc' 'ldap2' 'ldap2s' \
+              'mssql' 'mysql' 'nntp' 'oracle-listener' 'oracle-sid' 'pcanywhere' 'pcnfs' 'pop3' \
+                'pop3s' 'postgres' 'rdp' 'rexec' 'rlogin' 'rsh' 'sip' 'smb' 'smtp' 'smtps' \
+                'smtp-enum' 'snmp' 'socks5' 'ssh' 'svn' 'teamspeak' 'telnet' 'telnets' 'vmauthd' 'vnc' 'xmpp'
+    ;;
+esac
