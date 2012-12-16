@@ -1,0 +1,53 @@
+#compdef fwknop
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '-A[Provide a list of ports/protocols to open on the server]' \
+  '-B[Save the generated packet data to the specified file]' \
+  '-a[Specify IP address to allow within the SPA packet]' \
+  '-C[Specify a command that the fwknop server will execute on behalf of the fwknop client]' \
+  '-D[Specify the IP address of the fwknop server]' \
+  '-n[Specify an named configuration stanza in the $HOME/.fwknoprc file]' \
+  '-N[Gain NAT access to an internal service protected by the fwknop server]' \
+  '-p[Set the destination port for outgoing SPA packet]' \
+  '-P[Set the protocol for the outgoing SPA packet]:PROTOCOLS:->list-protocols' \
+  '-s[Tell the fwknopd server to accept whatever source IP the SPA packet has as the IP that needs access]' \
+  '-S[Set the source port for outgoing SPA packet]' \
+  '-R[Resolve the external network IP]:IP:_urls' \
+  '-u[Set the HTTP User-Agent for resolving the external IP via -R, or for sending SPA packets over HTTP]' \
+  '-H[Specify an HTTP proxy host through which the SPA packet will be sent]' \
+  '-U[Set the username within outgoing SPA packet]' \
+  '-l[Run the fwknop client with the same commandline args as the last time it was executed]' \
+  '-G[Load an encryption key/password from a file]' \
+  '-r[Send the SPA packet over a randomly assigned port]' \
+  '-T[Build the SPA packet but do not send it over the network]' \
+  '-v[Set verbose mode]' \
+  '-V[Print version number]' \
+  '-m[Specify the message digest algorithm to use]:DIGEST:->list-digest' \
+  '-f[Specify SPA server firewall timeout from the client side]' \
+  '--icmp-type[Set the ICMP type (used with -P icmp)]' \
+  '--icmp-code[Set the ICMP code (used with -P icmp)]' \
+  '--gpg-encryption[Use GPG encryption (default is Rijndael)]' \
+  '--gpg-recipient-key[Specify the recipient GPG key name or ID]' \
+  '--gpg-signer-key[Specify the signers GPG key name or ID]' \
+  '--gpg-home-dir[Specify the GPG home directory]' \
+  '--gpg-agent[Use GPG agent if available]' \
+  '--no-save-args[Do not save fwknop command line args to the $HOME/fwknop.run file]' \
+  '--nat-local[Access a local service via a forwarded port on the fwknopd server system]' \
+  '--nat-port[Specify the port to forward to access a service via NAT]' \
+  '--nat-rand-port[Have the fwknop client assign a random port for NAT access]' \
+  '--show-last[Show the last fwknop command line arguments]' \
+  '--time-offset-plus[Add time to outgoing SPA packet timestamp]' \
+  '--time-offset-minus[Subtract time from outgoing SPA packet timestamp]' \
+  
+case "$state" in
+  list-protocols)
+    _values -S : 'PROTOCOLS' 'udp' 'tcp' 'http' 'tcpraw' 'icmp'
+    ;;
+  list-digest)
+    _values -S : 'DIGEST' 'md5' 'sha1' 'sha256'
+    ;;
+esac
