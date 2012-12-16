@@ -1,0 +1,64 @@
+#compdef setcap capsh
+# egeektronic
+
+case "$service" in
+	setcap)
+	typeset -a actions
+		actions=(
+		'cap_audit_control:Enable and disable kernel auditing;'
+		'cap_audit_write:Write records to kernel auditing log'
+		'cap_chown:Make arbitrary changes to file UIDs and GIDs'
+		'cap_dac_override:Bypass file read, write, and execute permission checks'
+		'cap_dac_read_search:Bypass file read permission checks and directory read and execute permission checks'
+		'cap_fowner:Bypass permission checks'
+		'cap_fsetid:Dont  clear  set-user-ID  and set-group-ID permission bits when a file is modified'
+		'cap_ipc_lock:Lock memory'
+		'cap_kill:Bypass permission checks for sending signals'
+		'cap_lease:Establish leases on arbitrary files'
+		'cap_linux_immutable:Set the FS_APPEND_FL and FS_IMMUTABLE_FL i-node flags'
+		'cap_mac_override:Override Mandatory Access Control'
+		'cap_mknod:Create special files using mknod'
+		'cap_net_admin:Perform various network-related operations'
+		'cap_net_bind_service:Bind a socket to Internet domain privileged ports (port numbers less than 1024)'
+		'cap_net_broadcast:Make socket broadcasts, and listen to multicasts'
+		'cap_net_raw:use RAW and PACKET sockets'
+		'cap_setgid:Make arbitrary manipulations of process GIDs and supplementary GID list'
+		'cap_setfcap:Set file capabilities'
+		'cap_setpcap:grant or remove any capability in the callers permitted capability'
+		'cap_setuid:Make arbitrary  manipulations of process UIDs'
+		'cap_sys_admin:Perform a range of system administration operations'
+		'cap_sys_boot:Use reboot and kexec_load'
+		'cap_sys_chroot:Use chroot'
+		'cap_sys_module:Load and unload kernel modules'
+		'cap_sys_pacct:Use acct'
+		'cap_sys_ptrace:Trace arbitrary processes using ptrace'
+		'cap_sys_rawio:Perform I/O port operations'
+		'cap_sys_resource:System resource'
+		'cap_sys_time:Set system clock'
+		'cap_sys_tty_config:employ various privileged ioctl operations on virtual terminals'
+		'cap_syslog:Perform privileged syslog operations'
+		'cap_wake_alarm:Trigger something that will wake up the system'
+	)
+	_describe action actions
+	;;
+
+	capsh)
+    	_arguments \
+      '--help[Guess what?]' \
+      '--print[display capability relevant state]' \
+      '--decode=[decode a hex string to a list of caps]:hex string' \
+      '--supports=[exit 1 if capability xxx unsupported]:check xxx' \
+      '--inh=[set xxx,.. inheritiable set]:set xxx' \
+      '--drop=[remove xxx,.. capabilities from bset]:remove xxx' \
+      '--caps=[set caps as per cap_from_text()]:capek beud' \
+      '--secbits=[write a new value for securebits]:securebits value' \
+      '--keep=[set keep-capabability bit to <n>]:keep capability' \
+      '--uid=[set uid to <n>]:set uid' \
+      '--gid=[set gid to <n>]:set gid' \
+      '--groups=[set the supplemental groups]:set groups' \
+      '--user=[set uid,gid and groups to that of user]' \
+      '--chroot=[chroot(2) to this path]:chroot path' \
+      '--killit=[send signal(n) to child]:kill me' \
+      '--forkfor=[fork and make child sleep for <n> sec]:fork it'
+ 	;;
+esac
