@@ -1,0 +1,50 @@
+#compdef exifprobe
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '-V[print program version and copyright]' \
+  '-R[Report mode: only tagnames and decimal values, indented, inline]' \
+  '-L[List mode: list all tags and values (only); no structure]' \
+  '-S[Structure mode: everything, offset values not inline (default)]' \
+  '-Z[Zero (turn off) all output flags]' \
+  '-a[toggle print addresses in hex and decimal]' \
+  '-D[toggle print enabled addresses, tag numbers and values in decimal only]' \
+  '-X[toggle print enabled addresses, tag numbers and values in hex only]' \
+  '-I[toggle indent (after address -> before -> none)]' \
+  '-i[toggle "inline" print of IFD values]' \
+  '-n[toggle printing of filename at start of each output line]' \
+  '-c[toggle use of color to highlight certain sections]' \
+  '-u[print all 16 bits of unicode data]' \
+  '-M[hex/ascii dump len or all bytes of unknown MakerNotes]' \
+  '-A[hex/ascii dump len or all bytes of unknown APPn segments]' \
+  '-U[hex/ascii dump len or all bytes of UNDEFINED data of unknown format]' \
+  '-B[hex/ascii dump len or all bytes of binary images or invalid JPEG data]' \
+  '-N[force noteversion num for MakerNote interpretation]' \
+  '-m[force use of maker name to select MakerNote interpretation routines]' \
+  '-l[force use of model to select MakerNote interpretation routines]' \
+  '-O[start processing at 'offset' in file]' \
+  '-C[print makes matching make, models matching model (substrings)]' \
+  '-ps[toggle print identifiers for sections]' \
+  '-pg[toggle print identifiers for segments]' \
+  '-pe[toggle print identifiers for IFD entries]' \
+  '-pa[expand known entries in APP0...APPN segents]' \
+  '-pm[print MakerNote scheme detection info]' \
+  '-pM[debug MakerNote scheme detection info]' \
+  '-pl[long tagnames (default in List mode)]' \
+  '-et[toggle print IFD entry items tagname]' \
+  '-en[toggle print IFD entry items tag number in decimal]' \
+  '-eN[toggle print IFD entry items tag number in hex]' \
+  '-eT[entry type]' \
+  '-ev[value in decimal]' \
+  '-ev[value in decimal]' \
+  '-eV[value in hex]' \
+  '-eo[file offset to value in decimal]' \
+  '-eO[file offset to value in hex]' \
+  '-er[relative (unadjusted) offset in decimal]' \
+  '-eR[print "raw" values where expansion of values is needed]' \
+  '-ea[print ascii strings until null, rather than by length]' \
+  '-eA[print ALL elements of multiple-value tags]' \
+  
