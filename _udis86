@@ -1,0 +1,26 @@
+#compdef udcli
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[guess what?]' \
+  '-16[Set the disassembly mode to 16 bits]' \
+  '-32[Set the disassembly mode to 32 bits]' \
+  '-64[Set the disassembly mode to 64 bits]' \
+  '-intel[Set the output to INTEL (NASM like) syntax]' \
+  '-att[Set the output to AT&T (GAS like) syntax]' \
+  '-v[Set vendor]:VENDORS:->list-vendors' \
+  '-o[Set the value of program counter to <pc>]' \
+  '-s[Set the number of bytes to skip before disassembly to <n>]' \
+  '-c[Set the number of bytes to disassemble to <n>]' \
+  '-x[Set the input mode to whitespace seperated 8-bit numbers in hexadecimal representation]' \
+  '-noff[Do not display the offset of instructions]' \
+  '-nohex[Do not display the hexadecimal code of instructions]' \
+  '--version[Show version]' \
+ 
+case "$state" in
+  list-vendors)
+    _values -S : 'VENDORS' 'intel' 'amd'
+    ;;
+esac
