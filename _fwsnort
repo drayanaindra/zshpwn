@@ -1,0 +1,67 @@
+#compdef fwsnort
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '--strict[Make snort parser very strict about which options it will translate into iptables rules]' \
+  '--ipt-script=[Print iptables script to <script>]:script' \
+  '--ipt-apply[Execute the fwsnort.sh script]' \
+  '--ipt-reject[Add a protocol dependent REJECT rule]' \
+  '--ipt-drop[Add a DROP rule for every logging rule]' \
+  '--List[List all rules in fwsnort chains]' \
+  '--Flush[Flush all rules in fwsnort chains]' \
+  '--ipt-file=[Read iptables policy from a file]:ipt file' \
+  '--ipt-log-tcp-seq[Add the --log-tcp-sequence iptables]' \
+  '--snort-sid=[Generate an equivalent iptables rule]:sid' \
+  '--exclude-sid=[Exclude a list of sids from translation]:exclude' \
+  '--snort-conf=[Read Snort specific variables out of existing snort.conf file]:conf file' \
+  '--snort-rdir=[Specify path to Snort rules directory]:snort dir' \
+  '--snort-rfile=[Translate a single rules file]:snort file' \
+  '--ipt-check-capabilities[Check iptables capabilities and exit]' \
+  '--no-ipt-comments[Do not add Snort "msg" fields to iptables rules with the iptables comment match]' \
+  '--ipt-sync[Only add iptables rules for signatures that are not already blocked by iptables]' \
+  '--no-ipt-log[Do not generate iptables log rules]' \
+  '--no-ipt-test[Do not run any checks for availability of iptables modules]' \
+  '--no-ipt-jumps[Do not jump packets from built-in iptables INPUT or FORWARD chains to chains created by fwsnort]' \
+  '--no-ipt-rule-nums[For each iptables rule, add the rule number in the fwsnort chain to the logging prefix]' \
+  '--no-ipt-INPUT[Exclude INPUT chain processing]' \
+  '--no-ipt-OUTPUT[Exclude OUTPUT chain processing]' \
+  '--no-ipt-FORWARD[Exclude FORWARD chain processing]' \
+  '--no-fast-pattern-order[Do not reorder patterns based on length]' \
+  '--no-log-ip-opts[Do not add --log-ip-options to LOG rules]' \
+  '--no-log-tcp-opts[Do not add --log-tcp-options to LOG rules]' \
+  '--no-addresses[Do not look at addresses assigned to local interfaces]' \
+  '--no-exclude-lo[Do not exclude the loopback interface from fwsnort rules]' \
+  '--restrict-intf=[Restrict fwsnort rules to a specified interface]:intf' \
+  '-6[Enable ip6tables mode to build an fwsnort policy via ip6tables instead of iptables]' \
+  '--Home-net=[Manually specify the Home network]:netmask home' \
+  '--External-net=[Manually specify the external network]:netmask external' \
+  '--update-rules[Download latest rules from Emerging Threats]' \
+  '--rules-url=[Specify the URL to use for updating the Emerging Threats rule set]:URLS:_urls' \
+  '--include-perl-triggers[Include perl -e "print ..." commands that build payload data that matches snort rules]' \
+  '--include-type=[Only process snort rules of type]:include type' \
+  '--exclude-type=[Exclude processing of Snort rules of type]:exclude type' \
+  '--include-regex=[Include only those signatures that match the specified regex]:include regex' \
+  '--exclude-regex=[Exclude all Snort signatures that match the specified regex]:exclude regex' \
+  '--include-re-caseless[Make --include-regex searching case insensitive]' \
+  '--exclude-re-caseless[Make --exclude-regex searching case insensitive]' \
+  '-c[Use <config> instead of the normal config file]' \
+  '--logfile=[Log messages to <file> instead of the default location]:log file' \
+  '-N[Build a policy designed to only send packets that match Snort signature "content" fields to userspace via the NFQUEUE target]' \
+  '--queue-num=[Specify the queue number in --NFQUEUE mode]:NFQUEQUE num' \
+  '--queue-rules-dir=[Specify the path to the generated set of Snort rules that are to be queued to userspace in --NFQUEUE or --QUEUE mode]:queque dir' \
+  '-Q[Same as the --NFQUEUE option, except use the older iptables QUEUE target]' \
+  '--string-match-alg=[Specify the string match algorithm to use within the kernel]:algo' \
+  '-U[Force ULOG target for all log generation]' \
+  '--ulog-nlgroup=[Specify a ULOG netlink group]:ULOG group' \
+  '--Dump-ipt[Dump iptables rules on STDOUT as the rules are parsed]' \
+  '--Dump-snort[Dump Snort rules on STDOUT]' \
+  '--Dump-conf[Dump configuration on STDOUT and exit]' \
+  '--add-deleted[Added Snort "deleted" rules]' \
+  '--Last-cmd[Rebuild fwsnort.sh with the same command line args as the previous execution]' \
+  '--lib-dir=[Specify path to lib directory]:path lib' \
+  '--debug[Run in debug mode]' \
+  '-v[Run in verbose mode]' \
+  '-V[Print fwsnort version number and exit]' \
