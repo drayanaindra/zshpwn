@@ -1,0 +1,47 @@
+#compdef ettercap
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[guess what?]' \
+  '-M[perform a mitm attack]' \
+  '-o[dont sniff, only perform the mitm attack]' \
+  '-b[sniff packets coming from broadcast]' \
+  '-B[use bridged sniff (needs 2 ifaces)]' \
+  '-p[do not put the iface in promisc mode]' \
+  '-S[do not forge SSL certificates]' \
+  '-u[do not forward packets]' \
+  '-r[read data from pcapfile <file>]' \
+  '-f[set the pcap filter <string>]' \
+  '-R[use reversed TARGET matching]' \
+  '-t[sniff only this proto (default is all)]' \
+  '-T[use text only GUI]' \
+  '-q[do not display packet contents]' \
+  '-s[issue these commands to the GUI]' \
+  '-C[use curses GUI]' \
+  '-G[use GTK+ GUI]' \
+  '-w[write sniffed data to pcapfile <file>]' \
+  '-L[log all the traffic to this <logfile>]' \
+  '-l[log only passive infos to this <logfile>]' \
+  '-m[log all the messages to this <logfile>]' \
+  '-c[use gzip compression on log files]' \
+  '-d[resolves ip addresses into hostnames]' \
+  '-V[set the visualization format]' \
+  '-e[visualize only packets matching this regex]' \
+  '-E[print extended header for every pck]' \
+  '-Q[do not display user and password]' \
+  '-i[use this network interface]:INTERFACES:_net_interfaces' \
+  '-I[show all the network interfaces]' \
+  '-Y[list of secondary network interfaces]' \
+  '-n[force this <netmask> on iface]' \
+  '-A[force this local <address> on iface]' \
+  '-P[launch this <plugin>]' \
+  '-F[load the filter <file> (content filter)]' \
+  '-z[do not perform the initial ARP scan]' \
+  '-j[load the hosts list from <file>]' \
+  '-k[save the hosts list to <file>]' \
+  '-W[use this wep key to decrypt wifi packets]' \
+  '-a[use the alternative config file]' \
+  '-U[updates the databases from ettercap website]' \
+  '-v[prints the version and exit]' \
