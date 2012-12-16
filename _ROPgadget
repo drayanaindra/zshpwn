@@ -1,0 +1,26 @@
+#compdef ROPgadget
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-v[Version]' \
+  '-file[Load file]' \
+  '-g[Search gadgets and make payload]' \
+  '-elfheader[Display ELF Header]' \
+  '-progheader[Display Program Header]' \
+  '-sectheader[Display Section Header]' \
+  '-symtab[Display Symbols Table]' \
+  '-allheader[Display ELF/Program/Section/Symbols Header]' \
+  '-att[Display gadgets information in att syntax]' \
+  '-intel[Display gadgets information in intel syntax (default)]' \
+  '-bind[Set this flag for make a bind shellcode (optional) (Default local exploit)]' \
+  '-port[Set a listen port, optional (Default 1337)]' \
+  '-importsc[Make payload and convert your shellcode in ROP payload]' \
+  '-filter[Word filter (research slowed)]' \
+  '-only[Keyword research (research slowed)]' \
+  '-opcode[Search a specific opcode on exec segment]' \
+  '-string[Search a specific hard string on read segment]' \
+  '-asm[Search a specific instructions on exec segment]' \
+  '-limit[Limit the display of gadgets]' \
+  '-map[Search gadgets on exec segment between two address]' \
