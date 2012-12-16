@@ -1,0 +1,54 @@
+#compdef rkhunter
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '--append-log[Append to the logfile, do not overwrite]' \
+  '--bindir[Use the specified command directories]' \
+  '-c[Check the local system]' \
+  '-C[Check the configuration file(s), then exit]' \
+  '--cs2[Use the second color set for output]' \
+  '--configfile[Use the specified configuration file]' \
+  '--cronjob[Run as a cron job]' \
+  '--dbdir[Use the specified database directory]' \
+  '--debug[Debug mode]' \
+  '--disable[Disable specific tests]' \
+  '--enable[Enable specific tests]' \
+  '--display-logfile[Display the logfile at the end]' \
+  '--hash[Use the specified file hash function]:HASHES:->list-hashes' \
+  '--lang[Specify the language to use]' \
+  '--list[List the available test]' \
+  '-l[Write to a logfile]' \
+  '--noappend-log[Do not append to the logfile, overwrite it]' \
+  '--nocf[Do not use the configuration file entries for disabled tests (only valid with --disable)]' \
+  '--nocolors[Use black and white output]' \
+  '--nolog[Do not write to a logfile]' \
+  '--nomow[Do not send a message if warnings occur]' \
+  '--ns[Do not show the summary of check results]' \
+  '--novl[No verbose logging]' \
+  '--pkgmgr[Use the specified package manager to obtain or verify file property values]:PKG:->list-pkg' \
+  '--propupd[Update the entire file properties database or just for the specified entries]' \
+  '-q[Quiet mode (no output at all)]' \
+  '--rwo[Show only warning messages]' \
+  '--sk[Dont wait for a keypress after each test]' \
+  '--summary[Show the summary of system check results]' \
+  '--syslog[Log the check start and finish times to syslog]' \
+  '--tmpdir[Use the specified temporary directory]' \
+  '--unlock[Unlock (remove) the lock file]' \
+  '--update[Check for updates to database files]' \
+  '--vl[Use verbose logging (on by default)]' \
+  '-V[Display the version number, then exit]' \
+  '--versioncheck[Check for latest version of program]' \
+  '-x[Automatically detect if X is in use]' \
+  '-X[Do not automatically detect if X is in use]' \
+  
+case "$state" in
+  list-hashes)
+    _values -S : 'HASHES' 'MD5' 'SHA1' 'SHA224' 'SHA256' 'SHA384' 'SHA512' 'NONE'
+    ;;
+  list-pkg)
+    _values -S : 'PKG' 'RPM' 'DPKG' 'BSD' 'SOLARIS' 'NONE'
+    ;;
+esac
