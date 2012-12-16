@@ -1,0 +1,41 @@
+#compdef suricata
+# egeektronic
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-h[Guess what?]' \
+  '-c[path to configuration file]' \
+  '-T[test configuration file (use with -c)]' \
+  '-i[run in pcap live mode]:INTERFACE:_net_interfaces' \
+  '-F[bpf filter file]' \
+  '-r[run in pcap file/offline mode]' \
+  '-s[path to signature file loaded in addition to suricata.yaml settings (optional)]' \
+  '-S[path to signature file loaded exclusively (optional)]' \
+  '-l[default log directory]' \
+  '-D[run as daemon]' \
+  '-V[display Suricata version]' \
+  '--list-app-layer-protos[list supported app layer protocols]' \
+  '--list-keywords=[list keywords implemented by the engine]:KEYWORD:->list-keyword' \
+  '--runmode[specific runmode modification the engine should run]:MODES:->list-modes' \
+  '--engine-analysis[print reports on analysis of different sections in the engine and exit]' \
+  '--pidfile[write pid to this file (only for daemon mode)]' \
+  '--init-errors-fatal[enable fatal failure on signature init error]' \
+  '--dump-config[show the running configuration]' \
+  '--build-info[display build information]' \
+  '--pcap=[run in pcap mode, no value select interfaces from suricata.yaml]:pcap dev' \
+  '--pcap-buffer-size[size of the pcap buffer value from 0 - 2147483647]' \
+  '--af-packet=[run in af-packet mode, no value select interfaces from suricata.yaml]:af-packet dev' \
+  '--user[run suricata as this user after init]' \
+  '--group[run suricata as this group after init]' \
+  '--erf-in[process an ERF file]' \
+  
+case "$state" in
+  list-keyword)
+    _values -S : 'KEYWORD' 'all' 'csv' 'kword'
+    ;;
+  list-modes)
+    _values -S : 'MODES' 'PCAP_DEV' 'PCAP_FILE' 'PFRING' 'NFQ' 'IPFW' 'ERF_FILE' 'ERF_DAG' 'AF_PACKET_DEV'
+    ;;
+esac
+
