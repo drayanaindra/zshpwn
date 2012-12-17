@@ -42,3 +42,4 @@ _arguments \
   '-cmd[Apply command to every file, then re-insert exif and command sections into the image]' \
   '-orp[Only operate on portrait aspect ratio images]' \
   '-orl[Only operate on landscape aspect ratio images]' \
+  '*:point file:_files' \

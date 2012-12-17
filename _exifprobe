@@ -47,4 +47,5 @@ _arguments \
   '-eR[print "raw" values where expansion of values is needed]' \
   '-ea[print ascii strings until null, rather than by length]' \
   '-eA[print ALL elements of multiple-value tags]' \
+  '*:point file:_files' \
   
