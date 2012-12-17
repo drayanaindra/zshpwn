@@ -22,3 +22,4 @@ _arguments \
   '-Q[report flags in short format]' \
   '-c[convert PT_GNU_STACK into PT_PAX_FLAGS (see manpage!)]' \
   '-C[create PT_PAX_FLAGS (see manpage!)]' \
+  '*:bin file:_files' \

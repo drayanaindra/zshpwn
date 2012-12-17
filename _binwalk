@@ -28,3 +28,4 @@ _arguments \
   '-q[Supress output to stdout]' \
   '-A[Scan for executable code (implies -a)]' \
   '-C[Cast file contents as various data types (implies -k)]' \
+  '*:bin file:_files' \
