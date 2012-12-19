@@ -26,6 +26,7 @@ _arguments \
   '-k[keep backup files]' \
   '--no-backup[no backup files (default)]' \
   '--overlay=[overlay]:OVERLAYS:->list-overlays' \
+  '*:target file:_files' \
  
 case "$state" in
   list-overlays)

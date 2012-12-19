@@ -20,3 +20,4 @@ _arguments \
   '-t[Only displays matches above the given threshold]' \
   '-h[Guess what?]' \
   '-V[Display version number and exit]' \
+  '*:target file:_files' \
