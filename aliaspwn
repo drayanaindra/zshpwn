@@ -8,3 +8,4 @@ fi
 alias buf="perl -e 'print \"A\"x\$ARGV[0]'"
 alias fmt="perl -e 'print \"%A\"x\$ARGV[0]'"
 alias int='echo 0xfffffffe'
+alias startx='startx &> ~/startx.log'
