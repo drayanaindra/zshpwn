@@ -1,0 +1,20 @@
+#compdef canari
+# egeektronic
+
+
+typeset -a actions
+	actions=(
+		'create-package:Creates a Canari transform package skeleton'
+		'create-transform:Creates a new transform in the specified directory and auto-updates __init__.py'
+		'csv2sheets:Convert mixed entity type CSVs to separated CSV sheets'
+		'debug-transform:Runs Canari local transforms in a terminal-friendly fashion'
+		'delete-transform:Deletes a transform in the specified directory and auto-updates __init__.py'
+		'install-package:Installs and configures canari transform packages in Maltegos UI'
+		'mtgx2csv:Convert Maltego graph files (*.mtgx) to comma-separated values (CSV) file'
+		'rename-transform:Renames a transform in the specified directory and auto-updates __init__.py'
+		'run-server:Runs a transform server for the given packages'
+		'run-transform:Runs Canari local transforms in a terminal-friendly fashion'
+		'shell:Creates a Canari debug shell for the specified transform package'
+		'uninstall-package:Uninstalls and unconfigures canari transform packages in Maltegos UI'
+	)
+_describe action actions
